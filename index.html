@@ -54,12 +54,24 @@ h2:hover{animation:gt .35s steps(2) 2}@keyframes gt{0%{text-shadow:2px 0 #ff3d6e
 
 #intro{position:fixed;inset:0;z-index:20;background:#050505;transition:opacity .9s,visibility .9s}#intro.x{opacity:0;visibility:hidden}#an{position:absolute;inset:0;width:100%;height:100%;display:block}
 body.arr main{animation:arr 1.2s ease-out}@keyframes arr{from{opacity:0;transform:scale(1.12);filter:blur(10px)}}
+.sr{flex:1;min-width:110px;max-width:340px;margin-left:auto;background:#0e0e0f;border:1px solid var(--l);color:var(--i);border-radius:10px;padding:9px 12px;font:14px Inter,sans-serif;outline:0}.sr:focus{border-color:var(--a);box-shadow:0 0 12px #ffffff20}
+#sres{position:fixed;top:62px;left:10px;right:10px;max-width:560px;margin-left:auto;background:var(--p);border:1px solid var(--l);border-radius:12px;max-height:62vh;overflow:auto;z-index:7;display:none;box-shadow:0 12px 40px #000a}
+#sres a{display:block;padding:10px 14px;border-bottom:1px solid var(--l);text-decoration:none;color:var(--i)}#sres a:hover{background:#ffffff0d}#sres small{color:var(--a);margin-left:8px;font-size:12px}#sres span{display:block;color:var(--m);font-size:13px}
+.hl{animation:hl 2.5s}@keyframes hl{0%,100%{outline:2px solid transparent}15%,75%{outline:2px solid var(--a);background-color:#ffffff14}}
+@media(max-width:640px){.st{display:none}.brand small{display:none}}
+.dg{width:100%;max-width:420px;height:auto;display:block;margin:10px 0}.za{animation:arr 1s ease-out}
+#door{display:grid;place-items:center;padding:24px 0}
+.dr{position:relative;width:min(230px,60vw);aspect-ratio:3/5;background:#050505;border:3px solid #d9dce2;border-radius:115px 115px 6px 6px;box-shadow:0 0 40px #ffffff30,inset 0 0 60px #ffffff18;cursor:pointer;overflow:hidden;transition:.4s}
+.dr:hover{box-shadow:0 0 80px #ffffff77,inset 0 0 90px #ffffff33;transform:scale(1.03)}
+.dr:before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,#ffffff0d 0 2px,transparent 2px 22px),radial-gradient(ellipse at 50% 90%,#ffffff55,transparent 60%);animation:bl 3s infinite}
+.dr:after{content:'';position:absolute;left:50%;top:0;width:6px;height:100%;background:linear-gradient(#fff,transparent);opacity:.55;transform:translateX(-50%);filter:blur(2px)}
+.dk{position:absolute;right:14%;top:54%;width:12px;height:12px;border-radius:50%;background:#d9dce2;box-shadow:0 0 10px #fff;z-index:2}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style></head><body>
 <div id="pg"></div>
 <div id="intro"><canvas id="an"></canvas></div>
 <canvas id="fx"></canvas><div id="sp"></div>
-<header><button class="bg" id="bg" aria-label="Menu"><i></i><i></i><i></i></button><span class="brand">CYBER GUIDE <small>by nightsec</small></span><span class="st">en ligne</span></header>
+<header><button class="bg" id="bg" aria-label="Menu"><i></i><i></i><i></i></button><span class="brand">CYBER GUIDE <small>by nightsec</small></span><input id="sq" class="sr" placeholder="Rechercher (ex : kali linux)" oninput="sq(this.value)" autocomplete="off"><span class="st">en ligne</span></header><div id="sres"></div>
 <div id="ov"></div><nav id="nav"></nav><main id="v"></main>
 <footer>CYBER GUIDE by nightsec · contenu éducatif et défensif uniquement. Toute attaque sans autorisation est illégale.</footer>
 <script>
@@ -76,8 +88,23 @@ const DIST=[
 ["Manjaro","#35bf5c","M","Arch","Moyenne","Arch en plus simple","Installateur graphique et logiciels à jour.","https://manjaro.org/download/"],
 ["openSUSE","#73ba25","O","Indépendante","Moyenne","Administration, serveurs","Outils d'administration puissants (YaST).","https://get.opensuse.org/"],
 ["Qubes OS","#3874d8","Q","Xen","Difficile","Sécurité maximale","Isole chaque activité dans sa propre machine virtuelle.","https://www.qubes-os.org/downloads/"],
-["Alpine","#0d597f","A","Indépendante","Moyenne","Conteneurs, systèmes légers","Ultra-légère, quelques Mo seulement.","https://alpinelinux.org/downloads/"]];
-const dh=DIST.map(d=>'<div class="c"><div style="display:flex;gap:12px;align-items:center;margin-bottom:8px"><div style="width:46px;height:46px;flex:none;border-radius:50%;background:'+d[1]+';display:grid;place-content:center;font:700 22px \'Chakra Petch\',sans-serif;color:#fff;box-shadow:0 0 14px '+d[1]+'88">'+d[2]+'</div><h4 style="margin:0">'+d[0]+'</h4></div><p><b>Base :</b> '+d[3]+'<br><b>Difficulté :</b> '+d[4]+'<br><b>Idéal pour :</b> '+d[5]+'</p><p>'+d[6]+'</p><p><a href="'+d[7]+'" target="_blank" rel="noopener">Télécharger (site officiel)</a></p></div>').join('');
+["Alpine","#0d597f","A","Indépendante","Moyenne","Conteneurs, systèmes légers","Ultra-légère, quelques Mo seulement.","https://alpinelinux.org/downloads/"],
+["Zorin OS","#2ea8e6","Z","Ubuntu","Très facile","Anciens PC, passage depuis Windows","Interface qui ressemble à Windows ou macOS.","https://zorin.com/os/download/"],
+["elementary OS","#64baff","E","Ubuntu","Facile","Bureau élégant","Inspirée de macOS, simple et soignée.","https://elementary.io/"],
+["EndeavourOS","#7f3fbf","E","Arch","Moyenne","Arch accessible","Arch avec un installateur simple et une bonne communauté.","https://endeavouros.com/"],
+["Garuda","#ff3f6c","G","Arch","Moyenne","Jeux, look moderne","Mises à jour en continu avec sauvegardes automatiques.","https://garudalinux.org/downloads"],
+["AlmaLinux","#0f4266","A","Red Hat","Moyenne","Serveurs d'entreprise","Compatible Red Hat, stable sur le long terme.","https://almalinux.org/get-almalinux/"],
+["Rocky Linux","#10b981","R","Red Hat","Moyenne","Serveurs d'entreprise","Successeur communautaire de CentOS.","https://rockylinux.org/download"],
+["NixOS","#5277c3","N","Indépendante","Difficile","Systèmes reproductibles","Tout le système se décrit dans un fichier de configuration.","https://nixos.org/download/"],
+["Gentoo","#54487a","G","Indépendante","Difficile","Comprendre Linux en profondeur","Les logiciels sont compilés sur ta machine.","https://www.gentoo.org/downloads/"],
+["Slackware","#3a3a3a","S","Indépendante","Difficile","Puristes, histoire d'Unix","La plus ancienne distribution encore maintenue.","http://www.slackware.com/getslack/"],
+["Void Linux","#478061","V","Indépendante","Difficile","Minimalisme","Système rapide, sans systemd.","https://voidlinux.org/download/"],
+["Whonix","#3f5aa6","W","Debian","Moyenne","Anonymat avancé","Deux machines virtuelles qui forcent tout le trafic via Tor.","https://www.whonix.org/wiki/Download"],
+["BlackArch","#cc1f1f","B","Arch","Difficile","Pentest avancé","Des milliers d'outils de sécurité, pour utilisateurs expérimentés.","https://blackarch.org/downloads.html"],
+["MX Linux","#444c5c","M","Debian","Facile","Ordinateurs anciens","Légère, stable et pleine d'outils pratiques.","https://mxlinux.org/download-links/"],
+["Raspberry Pi OS","#c51a4a","R","Debian","Facile","Raspberry Pi et robotique","Le système officiel des Raspberry Pi.","https://www.raspberrypi.com/software/"]];
+const EX={"Ubuntu":"apt, versions fixes (LTS tous les 2 ans)","Linux Mint":"apt, versions fixes","Debian":"apt, stable (versions fixes)","Kali Linux":"apt, mises à jour en continu","Parrot OS":"apt, versions fixes","Tails":"apt, mises à jour du système complet","Arch Linux":"pacman, mises à jour en continu","Fedora":"dnf, versions tous les 6 mois","Pop!_OS":"apt, versions fixes","Manjaro":"pacman, mises à jour en continu","openSUSE":"zypper, Leap (fixe) ou Tumbleweed (continu)","Qubes OS":"dnf dans chaque machine virtuelle","Alpine":"apk, versions fixes","Zorin OS":"apt, versions fixes","elementary OS":"apt, versions fixes","EndeavourOS":"pacman, mises à jour en continu","Garuda":"pacman, mises à jour en continu","AlmaLinux":"dnf, versions fixes (10 ans)","Rocky Linux":"dnf, versions fixes (10 ans)","NixOS":"nix, versions fixes ou continu","Gentoo":"emerge (compilation), continu","Slackware":"pkgtools, versions fixes","Void Linux":"xbps, mises à jour en continu","Whonix":"apt, versions fixes","BlackArch":"pacman, mises à jour en continu","MX Linux":"apt, versions fixes","Raspberry Pi OS":"apt, versions fixes"};
+const dh=DIST.map(d=>'<div class="c"><div style="display:flex;gap:12px;align-items:center;margin-bottom:8px"><div style="width:46px;height:46px;flex:none;border-radius:50%;background:'+d[1]+';display:grid;place-content:center;font:700 22px \'Chakra Petch\',sans-serif;color:#fff;box-shadow:0 0 14px '+d[1]+'88">'+d[2]+'</div><h4 style="margin:0">'+d[0]+'</h4></div><p><b>Base :</b> '+d[3]+'<br><b>Difficulté :</b> '+d[4]+'<br><b>Idéal pour :</b> '+d[5]+'<br><b>Paquets et mises à jour :</b> '+(EX[d[0]]||'-')+'</p><p>'+d[6]+'</p><p><a href="'+d[7]+'" target="_blank" rel="noopener">Télécharger (site officiel)</a></p></div>').join('');
 const P=[
 {id:'accueil',t:'Accueil',d:'Le point de départ',h:`<h1>CYBER GUIDE<em>by nightsec</em></h1><p class="lead">Réseaux, Python, JavaScript, Linux, malwares, attaques, métiers, OSINT et sensibilisation. Du niveau zéro jusqu'au terrain, par petites étapes.</p><div class="n"><b>Rappel :</b> tout est fourni à but éducatif et défensif. Utiliser ces connaissances contre un système ou une personne sans autorisation est illégal.</div><p class="ty"><span id="ty"></span><b>_</b></p>`},
 {id:'reseaux',t:'Réseaux',d:'OSI, TCP/IP, ports, DNS',h:`<p class="lead">Comprendre le réseau, c'est comprendre comment les machines se parlent, donc comment protéger (ou casser) cette communication.</p>
@@ -338,14 +365,55 @@ console.log(fs.readFileSync("notes.txt", "utf8"));</pre>
 <h3>Commandes essentielles</h3><div class="w"><table><tr><th>Commande</th><th>Rôle</th></tr><tr><td><code>ls -la</code></td><td>Lister les fichiers avec permissions</td></tr><tr><td><code>cd /dossier</code></td><td>Changer de dossier</td></tr><tr><td><code>cat fichier</code></td><td>Afficher un fichier</td></tr><tr><td><code>grep mot fichier</code></td><td>Chercher un mot</td></tr><tr><td><code>chmod 755 f</code></td><td>Modifier les permissions</td></tr><tr><td><code>sudo</code></td><td>Exécuter en administrateur</td></tr><tr><td><code>ps aux</code></td><td>Voir les processus</td></tr><tr><td><code>ip a</code></td><td>Voir ses adresses réseau</td></tr></table></div>
 <p>Permissions : r=4, w=2, x=1. <code>755</code> = propriétaire tout, groupe et autres lecture + exécution.</p>
 <h3>Distributions</h3><p>Ubuntu/Debian pour apprendre, Kali et Parrot pour la sécurité, Tails pour l'anonymat. Installe-les dans une machine virtuelle (VirtualBox).</p>`},
-{id:'distros',t:'Distributions Linux',d:'Logos, attributs, téléchargement',h:`<p class="lead">Une distribution, c'est le noyau Linux plus des logiciels et un bureau. Voici les principales, avec le lien de téléchargement officiel. Les pastilles de couleur sont des repères visuels, pas les logos officiels.</p><div class="g">${dh}</div>
-<h3>Télécharger et installer en 5 étapes</h3><div class="n"><b>1.</b> Va uniquement sur le site officiel et télécharge l'image ISO.<br><b>2.</b> Vérifie l'empreinte SHA-256 avec <code>sha256sum fichier.iso</code> et compare avec celle du site.<br><b>3.</b> Crée une clé USB bootable avec Balena Etcher ou Rufus (8 Go minimum).<br><b>4.</b> Teste d'abord en machine virtuelle (VirtualBox) ou en mode Live, sans rien installer.<br><b>5.</b> Pour installer pour de bon, sauvegarde tes données. Un double démarrage avec Windows est possible.</div><p>Conseil : Ubuntu ou Linux Mint pour commencer, Kali dans une machine virtuelle pour la sécurité.</p>`},
+{id:'distros',t:'Distributions Linux',d:'Logos, attributs, téléchargement',h:`<p class="lead">Une distribution, c'est le noyau Linux plus des logiciels et un bureau. Voici les principales, avec le lien de téléchargement officiel. Les pastilles de couleur sont des repères visuels, pas les logos officiels.</p><input class="f" id="fq" placeholder="Filtrer : sécurité, débutant, léger, arch, serveur..." oninput="fd(this.value)" autocomplete="off"><div class="g" id="dg">${dh}</div>
+<h3>Télécharger et installer en 5 étapes</h3><div class="n"><b>1.</b> Va uniquement sur le site officiel et télécharge l'image ISO.<br><b>2.</b> Vérifie l'empreinte SHA-256 avec <code>sha256sum fichier.iso</code> et compare avec celle du site.<br><b>3.</b> Crée une clé USB bootable avec Balena Etcher ou Rufus (8 Go minimum).<br><b>4.</b> Teste d'abord en machine virtuelle (VirtualBox) ou en mode Live, sans rien installer.<br><b>5.</b> Pour installer pour de bon, sauvegarde tes données. Un double démarrage avec Windows est possible.</div><p>Conseil : Ubuntu ou Linux Mint pour commencer, Kali dans une machine virtuelle pour la sécurité.</p>
+<h3>Les grandes familles</h3><div class="w"><table><tr><th>Famille</th><th>Distributions</th><th>Paquets</th></tr><tr><td>Debian</td><td>Ubuntu, Mint, Kali, Parrot, Tails, MX, Raspberry Pi OS</td><td>apt (.deb)</td></tr><tr><td>Red Hat</td><td>Fedora, AlmaLinux, Rocky</td><td>dnf (.rpm)</td></tr><tr><td>Arch</td><td>Manjaro, EndeavourOS, Garuda, BlackArch</td><td>pacman</td></tr><tr><td>SUSE</td><td>openSUSE</td><td>zypper</td></tr><tr><td>Indépendantes</td><td>Alpine, Gentoo, NixOS, Void, Slackware</td><td>apk, emerge, nix, xbps</td></tr></table></div>
+<h3>Environnements de bureau</h3><div class="w"><table><tr><th>Bureau</th><th>Style</th><th>Poids</th></tr><tr><td>GNOME</td><td>Moderne et épuré</td><td>Moyen</td></tr><tr><td>KDE Plasma</td><td>Très personnalisable</td><td>Moyen</td></tr><tr><td>Cinnamon</td><td>Proche de Windows</td><td>Moyen</td></tr><tr><td>XFCE</td><td>Classique et simple</td><td>Léger</td></tr><tr><td>MATE</td><td>Traditionnel</td><td>Léger</td></tr><tr><td>LXQt</td><td>Minimaliste</td><td>Très léger</td></tr></table></div>
+<h3>Commandes de mise à jour</h3><pre>sudo apt update &amp;&amp; sudo apt upgrade   # Debian, Ubuntu, Kali
+sudo dnf upgrade                       # Fedora, Alma, Rocky
+sudo pacman -Syu                       # Arch et dérivées
+sudo zypper dup                        # openSUSE
+sudo apk upgrade                       # Alpine</pre>
+<h3>Comment choisir</h3><div class="w"><table><tr><th>Ton objectif</th><th>Choix conseillé</th></tr><tr><td>Premier contact avec Linux</td><td>Linux Mint, Ubuntu, Zorin OS</td></tr><tr><td>Apprendre la cybersécurité</td><td>Kali ou Parrot en machine virtuelle</td></tr><tr><td>Vie privée et anonymat</td><td>Tails, Whonix, Qubes OS</td></tr><tr><td>Vieux PC</td><td>MX Linux, Alpine, Debian XFCE</td></tr><tr><td>Serveur</td><td>Debian, Ubuntu Server, AlmaLinux, Rocky</td></tr><tr><td>Comprendre Linux en profondeur</td><td>Arch, Gentoo, NixOS</td></tr><tr><td>Raspberry Pi et robotique</td><td>Raspberry Pi OS</td></tr></table></div>
+<h3>Trois façons d'essayer</h3><p><b>Machine virtuelle</b> (VirtualBox, VMware) : sans risque, idéal pour Kali. <b>Mode Live USB</b> : tu démarres depuis la clé sans rien installer. <b>Double démarrage</b> : Linux à côté de Windows, il faut réduire une partition (sauvegarde obligatoire).</p>
+<h3>Après l'installation</h3><div class="n"><b>1.</b> Mises à jour complètes. <b>2.</b> Active le pare-feu (<code>sudo ufw enable</code>). <b>3.</b> Travaille avec un utilisateur normal, pas en root. <b>4.</b> Sauvegardes régulières (Timeshift). <b>5.</b> Installe seulement depuis les dépôts officiels. <b>6.</b> Chiffre le disque (LUKS) sur un PC portable.</div>`},
 {id:'outils',t:'Outils',d:'Sécurité et Linux',h:`<p class="lead">À utiliser uniquement sur tes machines ou des environnements autorisés.</p><h3>Sécurité</h3><div class="g"><div class="c"><h4>Nmap</h4><p>Découvre les machines et ports ouverts.</p></div><div class="c"><h4>Wireshark</h4><p>Analyse le trafic réseau paquet par paquet.</p></div><div class="c"><h4>Burp Suite</h4><p>Teste la sécurité d'applications web.</p></div><div class="c"><h4>Metasploit</h4><p>Framework de tests d'intrusion.</p></div><div class="c"><h4>Hashcat / John</h4><p>Audit de la robustesse des mots de passe.</p></div><div class="c"><h4>Ghidra</h4><p>Reverse engineering de programmes.</p></div><div class="c"><h4>Autopsy / Volatility</h4><p>Forensic disque et mémoire.</p></div><div class="c"><h4>Aircrack-ng</h4><p>Audit de la sécurité Wi-Fi.</p></div></div>
 <h3>Outils Linux utiles</h3><div class="g"><div class="c"><h4>grep, find, awk</h4><p>Fouiller fichiers et logs.</p></div><div class="c"><h4>tcpdump</h4><p>Capturer le trafic en terminal.</p></div><div class="c"><h4>netcat (nc)</h4><p>Le couteau suisse du réseau.</p></div><div class="c"><h4>ss / netstat</h4><p>Voir les connexions ouvertes.</p></div><div class="c"><h4>ufw / iptables</h4><p>Gérer le pare-feu.</p></div><div class="c"><h4>fail2ban</h4><p>Bannit les IP qui échouent trop de connexions.</p></div><div class="c"><h4>Lynis</h4><p>Audit de sécurité d'un système Linux.</p></div><div class="c"><h4>strings / file</h4><p>Inspecter un fichier inconnu.</p></div></div>`},
 {id:'osint',t:'OSINT / GEOINT',d:'Sources ouvertes et fuites',h:`<p class="lead">Collecter de l'information publique pour enquêter, se protéger ou se former.</p><div class="n"><b>Cadre légal :</b> enquêter sur une personne pour lui nuire (doxing, harcèlement) est une infraction. Entraîne-toi sur des cas fictifs, des jeux ou des organisations.</div>
 <h3>OSINT</h3><p>OSINT Framework (osintframework.com), Shodan, Censys, Wayback Machine (archive.org), Maltego, TheHarvester, guides de Bellingcat.</p>
 <h3>GEOINT</h3><p>GeoGuessr (jeu d'entraînement), Mapillary, Google Earth, SunCalc (position du soleil), Overpass Turbo (recherche OpenStreetMap), Sentinel Hub (images satellite), défis Quiztime.</p>
-<h3>Fuites de données (côté défense)</h3><p>Have I Been Pwned (haveibeenpwned.com) pour vérifier si ton email a fuité, Firefox Monitor, rapport « résultats sur vous » de Google, cybermalveillance.gouv.fr. Si ton compte apparaît : change le mot de passe, active la double authentification.</p>`},
+<h3>Fuites de données (côté défense)</h3><p>Have I Been Pwned (haveibeenpwned.com) pour vérifier si ton email a fuité, Firefox Monitor, rapport « résultats sur vous » de Google, cybermalveillance.gouv.fr. Si ton compte apparaît : change le mot de passe, active la double authentification.</p>
+<h3>Le processus, étape par étape</h3><div class="n"><b>1. Question</b> : que cherches-tu à savoir, et pourquoi ? <b>2. Sources</b> : où l'information peut-elle se trouver ? <b>3. Collecte</b> : note l'adresse, la date et l'heure, fais des captures. <b>4. Archivage</b> : Wayback Machine ou archive.today avant que la page disparaisse. <b>5. Vérification</b> : au moins deux sources indépendantes. <b>6. Analyse</b> : chronologie, liens, contradictions. <b>7. Rapport</b> : faits d'un côté, hypothèses de l'autre, avec un niveau de confiance (faible, moyen, élevé).</div>
+<h3>Familles de sources</h3><div class="w"><table><tr><th>Source</th><th>Exemples</th><th>Sert à</th></tr><tr><td>Web et archives</td><td>Moteurs, Wayback Machine, archive.today</td><td>Retrouver des pages supprimées</td></tr><tr><td>Domaines et infrastructure</td><td>ICANN Lookup, crt.sh, DNSDumpster, Shodan, Censys</td><td>Cartographier un site ou une entreprise</td></tr><tr><td>Entreprises</td><td>Societe.com, Infogreffe (FR), LBR (LU), Zefix (CH), OpenCorporates</td><td>Dirigeants, adresses, dates de création</td></tr><tr><td>Images et vidéos</td><td>Google Lens, TinEye, Yandex Images, InVID-WeVerify</td><td>Origine d'une image, montages</td></tr><tr><td>Cartes et satellite</td><td>Google Earth, Sentinel Hub, OpenStreetMap, Wikimapia</td><td>Lieux, évolution d'un site</td></tr><tr><td>Transports</td><td>FlightRadar24, ADS-B Exchange, MarineTraffic</td><td>Vols et navires (données publiques)</td></tr><tr><td>Données ouvertes</td><td>data.gouv.fr, data.public.lu, opendata.swiss</td><td>Registres et statistiques officiels</td></tr><tr><td>Presse et documents</td><td>Gallica, Europeana, Google Actualités, Google Scholar</td><td>Contexte et historique</td></tr></table></div>
+<h3>Recherche avancée sur les moteurs</h3><div class="w"><table><tr><th>Opérateur</th><th>Effet</th><th>Exemple</th></tr><tr><td><code>"..."</code></td><td>Expression exacte</td><td><code>"guide de cybersécurité"</code></td></tr><tr><td><code>site:</code></td><td>Limiter à un site</td><td><code>site:gouv.fr cybersécurité</code></td></tr><tr><td><code>filetype:</code></td><td>Type de fichier</td><td><code>filetype:pdf sensibilisation</code></td></tr><tr><td><code>intitle:</code></td><td>Mot dans le titre</td><td><code>intitle:OSINT guide</code></td></tr><tr><td><code>-</code></td><td>Exclure un mot</td><td><code>python -serpent</code></td></tr><tr><td><code>after: / before:</code></td><td>Filtrer par date</td><td><code>OSINT after:2024-01-01</code></td></tr></table></div><p>Côté défense : tape <code>site:tondomaine.com</code> pour voir ce qui est indexé sur ton propre site.</p>
+<h3>GEOINT : trouver où une image a été prise</h3><p>Cherche les indices dans l'ordre : <b>langue et enseignes</b>, <b>panneaux et marquages routiers</b>, <b>plaques</b>, <b>architecture</b>, <b>végétation et relief</b>, <b>poteaux électriques</b>, <b>côté de conduite</b>, <b>ombres et soleil</b> (SunCalc donne l'heure et l'orientation). Compare ensuite avec Street View, Mapillary et OpenStreetMap (Overpass Turbo pour chercher une combinaison d'éléments), puis confirme avec l'imagerie satellite.</p><p>Entraînement : GeoGuessr, défis Quiztime, rooms de géolocalisation sur TryHackMe, exercices du Bellingcat Online Investigation Toolkit.</p>
+<h3>Vérifier une image ou une information</h3><p>Recherche inversée (Google Lens, TinEye, Yandex), recherche de la première publication, métadonnées (voir la page Métadonnées), cohérence de la météo et des ombres, comparaison avec d'autres photos du même lieu. Méfie-toi des images générées par IA : mains, textes et reflets incohérents.</p>
+<h3>Outils de collecte et d'analyse</h3><div class="g"><div class="c"><h4>Maltego</h4><p>Graphe de liens entre domaines, entreprises et infrastructures.</p></div><div class="c"><h4>SpiderFoot</h4><p>Automatise la collecte sur un domaine ou une IP.</p></div><div class="c"><h4>theHarvester</h4><p>Sous-domaines et emails publics d'un domaine que tu possèdes.</p></div><div class="c"><h4>Recon-ng</h4><p>Framework modulaire de reconnaissance.</p></div><div class="c"><h4>Amass</h4><p>Cartographie des sous-domaines d'une organisation.</p></div><div class="c"><h4>ExifTool</h4><p>Lit et supprime les métadonnées de fichiers.</p></div><div class="c"><h4>InVID-WeVerify</h4><p>Vérification de vidéos et d'images.</p></div><div class="c"><h4>OSINT Framework</h4><p>Annuaire de milliers de ressources classées par thème.</p></div></div>
+<h3>Protéger l'enquêteur (OPSEC)</h3><p>Utilise un navigateur ou une machine virtuelle dédiée, sans tes comptes personnels. Ne contacte jamais la cible. Garde un journal de tes actions. Ne crée pas de faux comptes : la plupart des plateformes l'interdisent.</p>
+<h3>Éthique et loi</h3><div class="n">Ce qui est public n'est pas forcément permis : le RGPD protège les données personnelles, même visibles en ligne. Enquête sur des organisations, des événements ou des cas fictifs, avec un but légitime. Chercher à localiser ou à profiler un particulier peut constituer du harcèlement ou une atteinte à la vie privée.</div>
+<h3>S'entraîner légalement</h3><p>Rooms OSINT de TryHackMe (OhSINT, Sakura), défis du Bellingcat, Sourcing Games, GeoGuessr, et pour aller plus loin Trace Labs, qui organise des défis encadrés pour aider à retrouver des personnes disparues, en lien avec les forces de l'ordre.</p>
+<h3>Modèle de rapport</h3><pre>Titre, date, auteur
+Question posée
+Sources consultées (adresse, date de consultation)
+Faits établis (avec preuve)
+Hypothèses (niveau de confiance)
+Limites et zones d'ombre
+Conclusion</pre><p>Pour lancer des recherches techniques sur plusieurs sources à la fois, ouvre la page Moteur OSINT.</p>`},
+{id:'moteur',t:'Moteur OSINT',d:'Recherche multi-sources et fuites',h:`<p class="lead">Un moteur qui interroge plusieurs sources à la fois, sur des cibles techniques et sur tes propres données.</p>
+<div id="mch"><button class="btn" onclick="mk('d',this)">Domaine</button><button class="btn s" onclick="mk('c',this)">CVE</button><button class="btn s" onclick="mk('h',this)">Hash</button><button class="btn s" onclick="mk('u',this)">URL suspecte</button><button class="btn s" onclick="mk('e',this)">Mon e-mail</button><button class="btn s" onclick="mk('p',this)">Mon mot de passe</button></div>
+<input class="f" id="mi" placeholder="exemple.com" autocomplete="off" autocapitalize="off" spellcheck="false" style="margin-top:10px"><button class="btn" id="mb" onclick="mw()" style="margin-top:10px">Chercher</button>
+<div class="n" id="mn">Domaine ou site (le tien, ou dans un cadre autorisé).</div><div id="mo" class="g"></div>
+<div class="c" style="margin-top:12px"><h4>Pourquoi pas de recherche par nom, prénom ou pseudo ?</h4><p>Ce type de recherche permet de profiler une personne précise : c'est la porte d'entrée du harcèlement et du doxing, et le RGPD protège ces données. Pour savoir ce qui existe sur toi, cherche ton propre nom sur un moteur classique, vérifie ton e-mail avec l'onglet « Mon e-mail » et ton mot de passe avec « Mon mot de passe ».</p></div>`},
+{id:'meta',t:'Métadonnées',d:'Ce que tes fichiers révèlent',h:`<p class="lead">Les métadonnées sont des informations cachées dans un fichier : qui l'a créé, avec quoi, quand, et parfois où.</p>
+<div class="g"><div class="c"><h4>Photos (EXIF)</h4><p>Modèle de l'appareil, date, réglages et coordonnées GPS.</p></div><div class="c"><h4>Documents Office</h4><p>Auteur, entreprise, historique de révisions, commentaires.</p></div><div class="c"><h4>PDF</h4><p>Logiciel utilisé, auteur, dates, parfois le chemin du fichier d'origine.</p></div><div class="c"><h4>Audio et vidéo</h4><p>Titre, appareil, date, parfois le lieu d'enregistrement.</p></div><div class="c"><h4>Pages web</h4><p>Balises meta, en-têtes HTTP, technologies utilisées.</p></div></div>
+<h3>Analyse une de tes photos</h3><div class="c"><p>Choisis une photo JPEG. Elle est lue directement dans ton navigateur et n'est jamais envoyée.</p><input type="file" accept="image/*" onchange="mfile(this.files[0])"><pre id="mo2" style="display:none"></pre><button class="btn" id="msb" style="display:none" onclick="strip()">Télécharger une copie sans métadonnées</button></div>
+<h3>Pourquoi c'est un risque</h3><p>Une photo publiée avec ses coordonnées GPS peut révéler ton domicile, ton école ou tes habitudes. Un document Word peut contenir le nom de l'auteur, des commentaires oubliés ou d'anciennes versions du texte. Des personnes ont été localisées grâce à une seule photo.</p>
+<h3>Voir et supprimer avec ExifTool</h3><pre>exiftool photo.jpg            # tout afficher
+exiftool -gps:all= photo.jpg  # enlever le GPS
+exiftool -all= photo.jpg      # tout enlever
+mat2 document.pdf             # nettoyer un document</pre>
+<h3>Désactiver à la source</h3><div class="w"><table><tr><th>Où</th><th>Comment</th></tr><tr><td>iPhone</td><td>Réglages, Confidentialité, Service de localisation, Appareil photo : jamais. Au partage : Options, Position désactivée.</td></tr><tr><td>Android</td><td>Appareil photo, Paramètres, Balises de localisation désactivées.</td></tr><tr><td>Windows</td><td>Clic droit sur le fichier, Propriétés, Détails, Supprimer les propriétés et les informations personnelles.</td></tr><tr><td>Word, Excel</td><td>Fichier, Informations, Inspecter le document.</td></tr><tr><td>Linux, Mac</td><td>ExifTool ou mat2 en ligne de commande.</td></tr></table></div>
+<h3>Bon à savoir</h3><p>Beaucoup de réseaux sociaux suppriment les EXIF à l'envoi, mais ce n'est pas garanti : les emails, les cloud et les sites web les conservent souvent. Vérifie toujours avant de publier.</p>`},
 {id:'entrainer',t:'S\'entraîner',d:'Plateformes légales',h:`<div class="g"><div class="c"><h4>TryHackMe</h4><p>Le meilleur départ : cours guidés et machines virtuelles.</p></div><div class="c"><h4>Root-Me</h4><p>Défis en français, de tous niveaux.</p></div><div class="c"><h4>OverTheWire</h4><p>Jeux Linux (Bandit) pour apprendre le terminal.</p></div><div class="c"><h4>PortSwigger Academy</h4><p>Cours gratuits sur les failles web.</p></div><div class="c"><h4>Hack The Box</h4><p>Machines plus difficiles, niveau avancé.</p></div><div class="c"><h4>picoCTF</h4><p>CTF pensé pour les débutants.</p></div><div class="c"><h4>CyberDefenders</h4><p>Côté défense : analyse de logs et forensic.</p></div><div class="c"><h4>OWASP Juice Shop</h4><p>Appli web volontairement vulnérable à installer chez soi.</p></div><div class="c"><h4>VulnHub</h4><p>Machines vulnérables à télécharger.</p></div></div>`},
 {id:'metiers',t:'Métiers et salaires',d:'France, Suisse, Luxembourg',h:`<p class="lead">Salaires bruts annuels indicatifs, selon expérience, employeur et ville. À vérifier sur des offres récentes.</p><div class="w"><table><tr><th>Métier</th><th>France</th><th>Suisse</th><th>Luxembourg</th></tr>
 <tr><td>Analyste SOC</td><td>35–50 k€</td><td>85–115 kCHF</td><td>45–70 k€</td></tr>
@@ -367,6 +435,91 @@ console.log(fs.readFileSync("notes.txt", "utf8"));</pre>
 <div class="c" style="margin-top:12px"><h4>4. Linux</h4><p>Quelle commande affiche le dossier dans lequel tu te trouves ?</p><input id="q3" placeholder="ta réponse" autocomplete="off"><button class="btn" onclick="chk(3)">Valider</button><span id="r3"></span></div>`},
 {id:'glossaire',t:'Glossaire',d:'Le vocabulaire cyber',h:`<input class="f" id="gq" placeholder="Rechercher un terme..." oninput="gl(this.value)" autocomplete="off"><div class="g" id="gl"></div>`},
 {id:'jeu',t:'Mini-jeu phishing',d:'Teste tes réflexes',h:`<p class="lead">Phishing ou message légitime ?</p><div class="c"><p id="sc">Score : 0 / 0</p><h4 id="fr"></h4><p id="ms"></p><p id="rs"></p></div><button class="btn" onclick="ans(1)">Phishing</button><button class="btn s" onclick="ans(0)">Légitime</button><button class="btn s" onclick="nx()">Suivant</button>`},
+{id:'tunnel',t:'Tunnel',d:'La porte vers la zone Robotique et IA',h:`<p class="lead">Une porte se dresse devant toi. Derrière : la zone Robotique et IA.</p>
+<div id="door"><div class="dr" onclick="tele()"><i class="dk"></i></div><p style="text-align:center;color:var(--m)">Clique sur la porte</p></div>
+<div id="zone" hidden><h3 style="margin-top:0">Zone Robotique et IA</h3><p class="lead">Deux parcours qui se rejoignent : construire des machines qui agissent, et des programmes qui apprennent. Suis les étapes dans l'ordre.</p>
+<div class="g"><div class="c"><h4>Robotique</h4><p>Électricité, Arduino, capteurs, moteurs, Raspberry Pi, ROS, contrôle PID, vision.</p></div><div class="c"><h4>Intelligence artificielle</h4><p>Maths, Python, machine learning, réseaux de neurones, LLM, sécurité de l'IA.</p></div></div>
+<h2 style="font-size:28px;margin-top:1.2em">Parcours Robotique</h2>
+<h3>1. Électricité de base</h3><p>Loi d'Ohm : <b>U = R × I</b> (tension = résistance × courant). Puissance : <b>P = U × I</b>. Pour une LED sur 5 V avec 2 V de chute et 20 mA : R = (5 − 2) / 0,02 = 150 Ω, on prend 220 Ω.</p>
+<svg class="dg" viewBox="0 0 320 120"><rect width="320" height="120" rx="10" fill="#0e0e0f"/><g stroke="#d9dce2" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 60H70l8-14 14 28 14-28 14 28 14-28 8 14H200"/><path d="M200 40v40l30-20z"/><path d="M232 40v40M232 60H300V102H40"/></g><g fill="#9b9fa7" font-size="11"><text x="14" y="48">Pin 13</text><text x="95" y="30">Résistance 220 Ω</text><text x="205" y="30" fill="#ffb84d">LED</text><text x="36" y="116">GND (masse)</text></g></svg>
+<h3>2. Arduino : le premier programme</h3><p>Une carte Arduino Uno (ou ESP32 pour le Wi-Fi) exécute en boucle ton code C++. L'IDE Arduino suffit pour commencer.</p><pre>void setup() {
+  pinMode(13, OUTPUT);
+}
+void loop() {
+  digitalWrite(13, HIGH);
+  delay(500);
+  digitalWrite(13, LOW);
+  delay(500);
+}</pre>
+<h3>3. Signal PWM : contrôler une vitesse</h3><p>Un moteur ne se règle pas avec un courant variable mais avec un signal qui s'allume et s'éteint très vite. Plus il reste allumé, plus le moteur tourne vite : c'est le rapport cyclique, utilisé avec <code>analogWrite(pin, 0 à 255)</code>.</p>
+<svg class="dg" viewBox="0 0 320 110"><rect width="320" height="110" rx="10" fill="#0e0e0f"/><path d="M10 80H40V30H100V80H130V30H190V80H220V30H280V80H310" stroke="#d9dce2" stroke-width="3" fill="none"/><g fill="#9b9fa7" font-size="11"><text x="52" y="22">ON</text><text x="12" y="102">Rapport cyclique = temps ON / période (ici environ 50 %)</text></g></svg>
+<h3>4. Capteurs et actionneurs</h3><div class="w"><table><tr><th>Composant</th><th>Rôle</th></tr><tr><td>HC-SR04 (ultrason)</td><td>Mesure une distance</td></tr><tr><td>Capteur infrarouge</td><td>Détecte une ligne ou un obstacle</td></tr><tr><td>MPU6050</td><td>Accéléromètre et gyroscope</td></tr><tr><td>Encodeur</td><td>Compte les tours d'une roue</td></tr><tr><td>Servomoteur</td><td>Angle précis (0 à 180°)</td></tr><tr><td>Moteur DC + driver (L298N, TB6612)</td><td>Roues</td></tr><tr><td>Moteur pas à pas + A4988</td><td>Positions très précises</td></tr></table></div>
+<pre>#include &lt;Servo.h&gt;
+Servo bras;
+const int TRIG = 9, ECHO = 10;
+void setup() {
+  pinMode(TRIG, OUTPUT); pinMode(ECHO, INPUT);
+  bras.attach(6);
+  Serial.begin(9600);
+}
+long distanceCm() {
+  digitalWrite(TRIG, LOW); delayMicroseconds(2);
+  digitalWrite(TRIG, HIGH); delayMicroseconds(10);
+  digitalWrite(TRIG, LOW);
+  return pulseIn(ECHO, HIGH) / 58;
+}
+void loop() {
+  long d = distanceCm();
+  Serial.println(d);
+  bras.write(d &lt; 20 ? 180 : 0);
+  delay(100);
+}</pre>
+<h3>5. L'architecture d'un robot</h3><svg class="dg" viewBox="0 0 340 130"><rect width="340" height="130" rx="10" fill="#0e0e0f"/><g fill="#1e1f22" stroke="#d9dce2" stroke-width="2"><rect x="10" y="45" width="80" height="40" rx="6"/><rect x="130" y="45" width="80" height="40" rx="6"/><rect x="250" y="45" width="80" height="40" rx="6"/><rect x="130" y="95" width="80" height="26" rx="6"/></g><path d="M90 65H130M210 65H250M170 95V85" stroke="#ffb84d" stroke-width="2"/><g fill="#eceef1" font-size="12" text-anchor="middle"><text x="50" y="69">Capteurs</text><text x="170" y="69">Contrôleur</text><text x="290" y="69">Moteurs</text><text x="170" y="112">Batterie</text><text x="170" y="30" fill="#9b9fa7">Percevoir, décider, agir</text></g></svg>
+<p>Premier projet : un robot qui évite les obstacles. Si distance &lt; 20 cm : s'arrêter, reculer, tourner. Sinon : avancer. Ajoute ensuite un suiveur de ligne avec deux capteurs infrarouges.</p>
+<h3>6. Raspberry Pi et Python</h3><p>Un Raspberry Pi est un vrai ordinateur Linux : caméra, réseau, IA embarquée. Il se programme en Python.</p><pre>from gpiozero import LED, Button
+led, bouton = LED(17), Button(2)
+bouton.when_pressed = led.toggle</pre>
+<h3>7. Le contrôle PID</h3><p>Pour garder une vitesse ou une direction stable, le PID corrige l'erreur : P (erreur présente), I (erreurs passées cumulées), D (variation de l'erreur).</p><pre>def pid(erreur, somme, derniere, kp=1.0, ki=0.1, kd=0.05):
+    somme += erreur
+    sortie = kp * erreur + ki * somme + kd * (erreur - derniere)
+    return sortie, somme, erreur</pre>
+<h3>8. ROS 2 et simulation</h3><p>ROS 2 organise un robot en <b>nœuds</b> qui échangent des messages sur des <b>topics</b>. Simule avant de construire avec Gazebo. Pour la navigation : SLAM (cartographier) et Nav2 (se déplacer).</p><pre>import rclpy
+from std_msgs.msg import String
+rclpy.init()
+n = rclpy.create_node("capteur")
+pub = n.create_publisher(String, "mesures", 10)
+msg = String(); msg.data = "distance=42"
+pub.publish(msg)</pre>
+<h3>9. Vision par ordinateur</h3><pre>import cv2
+cap = cv2.VideoCapture(0)
+ok, img = cap.read()
+hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+masque = cv2.inRange(hsv, (0, 120, 70), (10, 255, 255))   # rouge
+contours, _ = cv2.findContours(masque, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+print(len(contours), "objets rouges")</pre><p>Pour reconnaître des objets, passe à un détecteur comme YOLO.</p>
+<h2 style="font-size:28px;margin-top:1.2em">Parcours Intelligence artificielle</h2>
+<h3>1. Les bases à maîtriser</h3><p>Python (NumPy, pandas), un peu d'algèbre linéaire (vecteurs, matrices), de probabilités et de dérivées. Trois familles d'apprentissage : <b>supervisé</b> (exemples avec réponses), <b>non supervisé</b> (trouver des groupes) et <b>par renforcement</b> (apprendre par récompense, comme pour un robot).</p>
+<h3>2. Ton premier modèle</h3><pre>from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+X, y = load_iris(return_X_y=True)
+Xa, Xt, ya, yt = train_test_split(X, y, test_size=0.2, random_state=0)
+modele = RandomForestClassifier().fit(Xa, ya)
+print("précision :", modele.score(Xt, yt))</pre>
+<h3>3. Évaluer un modèle</h3><div class="w"><table><tr><th>Mesure</th><th>Sens</th></tr><tr><td>Précision</td><td>Parmi ce qui est prédit positif, combien l'est vraiment</td></tr><tr><td>Rappel</td><td>Parmi les vrais positifs, combien sont trouvés</td></tr><tr><td>F1</td><td>Compromis entre précision et rappel</td></tr><tr><td>Sur-apprentissage</td><td>Excellent à l'entraînement, mauvais sur de nouvelles données : toujours tester sur des données jamais vues</td></tr></table></div>
+<h3>4. Réseaux de neurones</h3><p>Un neurone calcule une somme pondérée de ses entrées puis applique une fonction d'activation (ReLU, sigmoïde). Les couches s'empilent, et la <b>rétropropagation</b> ajuste les poids pour réduire l'erreur.</p>
+<svg class="dg" id="nn" viewBox="0 0 320 140"></svg>
+<pre>import torch, torch.nn as nn
+reseau = nn.Sequential(nn.Linear(784, 128), nn.ReLU(), nn.Linear(128, 10))
+perte = nn.CrossEntropyLoss()
+opt = torch.optim.Adam(reseau.parameters(), lr=1e-3)
+# pour chaque lot (x, y) :
+#   opt.zero_grad(); perte(reseau(x), y).backward(); opt.step()</pre>
+<h3>5. Deep learning et LLM</h3><p>Les <b>CNN</b> analysent les images. Les <b>Transformers</b> traitent le texte grâce à l'attention. Un LLM découpe le texte en tokens, prédit le suivant, puis est affiné (fine-tuning, RLHF) pour suivre des instructions. Tu peux en faire tourner un en local avec Ollama.</p>
+<h3>6. IA et cybersécurité</h3><div class="w"><table><tr><th>Menace</th><th>Principe</th><th>Défense</th></tr><tr><td>Prompt injection</td><td>Instructions cachées dans un texte lu par l'IA</td><td>Séparer instructions et données, valider les sorties</td></tr><tr><td>Empoisonnement de données</td><td>Fausses données dans l'entraînement</td><td>Contrôler les sources, auditer</td></tr><tr><td>Exemples adverses</td><td>Image modifiée pour tromper un modèle</td><td>Entraînement robuste, tests</td></tr><tr><td>Fuite de données</td><td>Le modèle restitue des infos privées</td><td>Ne pas entraîner sur des secrets</td></tr><tr><td>Deepfakes</td><td>Voix ou visages truqués</td><td>Vérification, signatures de provenance</td></tr><tr><td>Agents trop libres</td><td>Une IA qui agit avec trop de droits</td><td>Moindre privilège, validation humaine</td></tr></table></div><p>Côté défense, l'IA aide à détecter des anomalies, trier les alertes d'un SOC, analyser des malwares et repérer le phishing. Référence : OWASP Top 10 for LLM Applications.</p>
+<h3>7. Éthique et loi</h3><p>Biais des données, respect de la vie privée, transparence. En Europe, le règlement sur l'IA (AI Act) classe les usages selon leur niveau de risque.</p>
+<h3>Projets pour progresser</h3><p>Robot suiveur de ligne, bras à servomoteurs, robot évitant les obstacles avec ESP32, détecteur de spam, détecteur de phishing par machine learning, reconnaissance de chiffres, chatbot local avec Ollama.</p>
+<h3>Ressources</h3><p>Arduino Project Hub, tutoriels ROS 2, cours Machine Learning d'Andrew Ng, fast.ai, Hugging Face Course, Kaggle, vidéos de 3Blue1Brown sur les réseaux de neurones, « Zero to Hero » d'Andrej Karpathy.</p></div>`},
 {id:'apropos',t:'À propos',d:'Qui est nightsec',h:`<h3 style="margin-top:0">Le développeur du site</h3><p class="lead">Je suis nightsec, le développeur de ce site. J'apprends la cybersécurité et j'ai construit CYBER GUIDE pour progresser en mettant par écrit ce que j'étudie.</p><p>Mon but est double : aider les autres à se lancer avec des bases honnêtes, et apprendre moi-même. Je ne suis pas un expert, j'apprends en construisant, en testant et en me trompant. Le site grandit avec mon niveau.</p><div class="g"><div class="c"><h4>Apprendre en faisant</h4><p>Chaque page correspond à une notion que j'ai étudiée.</p></div><div class="c"><h4>Transmettre</h4><p>Rendre simple ce qui m'a paru compliqué au début.</p></div><div class="c"><h4>Rester légal</h4><p>Comprendre les menaces pour s'en protéger, jamais pour nuire.</p></div></div><p><a href="https://www.tiktok.com/@nightsec.exe" target="_blank" rel="noopener">TikTok : @nightsec.exe</a></p>`}
 ];
 const $=s=>document.querySelector(s);
@@ -379,7 +532,7 @@ function go(){const id=location.hash.slice(1),p=P.find(x=>x.id==id)||P[0],m=$('#
 m.style.animation='none';m.offsetWidth;m.style.animation='';
 m.innerHTML=(p.id=='accueil'?'':'<h2>'+p.t+'</h2>')+p.h;document.title=p.t+' · CYBER GUIDE by nightsec';
 document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('on',a.dataset.id==p.id));
-menu(false);scrollTo(0,0);if(p.id=='jeu')nx();if(p.id=='linux')ps();if(p.id=='glossaire')gl('');if(p.id=='accueil')ty()}
+menu(false);scrollTo(0,0);if(p.id=='jeu')nx();if(p.id=='linux')ps();if(p.id=='glossaire')gl('');if(p.id=='accueil')ty();if(p.id=='tunnel')tz();if(p.id=='moteur')mK='d';pend()}
 addEventListener('hashchange',go);
 /* terminal */
 const T={'readme.txt':'Bienvenue dans le terminal nightsec.','notes':{'todo.txt':'1. apprendre nmap\n2. finir TryHackMe'},'projets':{}};let cwd=[];
@@ -456,6 +609,66 @@ g.font='500 11px ui-monospace,Menlo,monospace';g.fillStyle='#8a8d94';iSp(g,t<140
 g.setTransform(1,0,0,1,0,0);fl=Math.max(fl*.9,lp*lp);g.fillStyle='rgba(255,255,255,'+Math.min(1,fl)+')';g.fillRect(0,0,W,H);
 if(t>10750)skip()}catch(e){skip();return}requestAnimationFrame(fr)}
 requestAnimationFrame(fr)}
+const nz=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase(),esc=s=>String(s).replace(/[&<>"']/g,c=>'&#'+c.charCodeAt(0)+';');
+let IX=null,PEND=null,RS=[],TZ=false,mK='d',CUR=null;
+function ix(){if(IX)return IX;IX=[];P.forEach(p=>{if(p.id=='accueil')return;IX.push({pid:p.id,pt:p.t,ti:p.t,tx:p.d,n:-1,k:nz(p.t+' '+p.d)});if(['glossaire','jeu','tunnel'].includes(p.id))return;const d=document.createElement('div');d.innerHTML=p.h;
+d.querySelectorAll('h3,.c,tr').forEach((el,n)=>{if(el.querySelector('th'))return;let tx=el.textContent.replace(/\s+/g,' ').trim(),h;if(!tx)return;
+if(el.tagName=='H3'){h=tx;let s=el.nextElementSibling,a=[];while(s&&s.tagName!='H3'){a.push(s.textContent);s=s.nextElementSibling}tx=a.join(' ').replace(/\s+/g,' ').trim().slice(0,500)}else h=(el.querySelector('h4')||{}).textContent||tx.slice(0,48);
+IX.push({pid:p.id,pt:p.t,ti:h,tx,n,k:nz(h+' '+tx)})})});
+IX.push({pid:'tunnel',pt:'Tunnel',ti:'Zone Robotique et IA',tx:'Arduino, Raspberry Pi, ROS, capteurs, moteurs, PID, vision, réseaux de neurones, machine learning, LLM',n:-1,k:nz('tunnel zone robotique ia intelligence artificielle arduino raspberry pi ros capteurs moteurs pid vision neurones machine learning deep learning llm prompt injection')});
+G.forEach(g=>IX.push({pid:'glossaire',pt:'Glossaire',ti:g[0],tx:g[1],q:g[0],k:nz(g[0]+' '+g[1])}));return IX}
+function sq(v){const o=$('#sres'),q=nz(v.trim());if(q.length<2){o.style.display='none';return}const Wd=q.split(/\s+/);
+RS=ix().map(e=>{if(!Wd.every(w=>e.k.includes(w)))return null;const t=nz(e.ti);return{e,s:(t.includes(q)?20:0)+(t.startsWith(q)?10:0)+(e.k.includes(q)?5:0)+(e.n<0?8:0)+Wd.filter(w=>t.includes(w)).length*3}}).filter(Boolean).sort((a,b)=>b.s-a.s).slice(0,8).map(x=>x.e);
+o.innerHTML=RS.length?RS.map((e,i)=>'<a href="#'+e.pid+'" onclick="gt(event,'+i+')"><b>'+esc(e.ti)+'</b><small>'+esc(e.pt)+'</small><span>'+esc(e.tx.slice(0,100))+'</span></a>').join(''):'<a style="color:var(--m)">Aucun résultat. Essaie un autre mot.</a>';o.style.display='block'}
+function gt(ev,i){ev.preventDefault();const e=RS[i];$('#sres').style.display='none';$('#sq').value='';PEND=e;if(location.hash.slice(1)==e.pid)go();else location.hash=e.pid}
+function pend(){if(!PEND)return;const e=PEND;PEND=null;setTimeout(()=>{if(e.q){const i=$('#gq');if(i){i.value=e.q;gl(e.q)}return}if(e.n<0)return;const el=document.querySelectorAll('#v h3,#v .c,#v tr')[e.n];if(el){el.scrollIntoView({block:'center',behavior:'smooth'});el.classList.add('hl');setTimeout(()=>el.classList.remove('hl'),2500)}},120)}
+document.addEventListener('click',e=>{if(!e.target.closest('#sres,#sq'))$('#sres').style.display='none'});
+addEventListener('keydown',e=>{if(e.key=='Escape')$('#sres').style.display='none';if(e.key=='/'&&!/INPUT|TEXTAREA/.test(document.activeElement.tagName)&&!gone===false){e.preventDefault();$('#sq').focus()}});
+function fd(q){q=nz(q);document.querySelectorAll('#dg .c').forEach(c=>c.style.display=nz(c.textContent).includes(q)?'':'none')}
+/* moteur osint */
+const PHs={d:'exemple.com',c:'CVE-2021-44228',h:'SHA-256, SHA-1 ou MD5',u:'https://site-suspect.example/page',e:'',p:'Un mot de passe de test'},NT={d:'Domaine ou site (le tien, ou dans un cadre autorisé).',c:'Identifiant CVE d\'une faille connue.',h:'Empreinte d\'un fichier (MD5, SHA-1 ou SHA-256).',u:'Adresse d\'une page suspecte à analyser.',e:'Vérifie uniquement ta propre adresse, directement sur le site du service : elle ne transite pas par ici.',p:'Ton mot de passe n\'est jamais envoyé : seuls 5 caractères de son empreinte SHA-1 partent vers l\'API Pwned Passwords, le reste est comparé dans ton navigateur. Entre plutôt un mot de passe du même style que le tien.'};
+function mk(k,b){mK=k;document.querySelectorAll('#mch .btn').forEach(x=>x.classList.toggle('s',x!=b));const i=$('#mi');i.type=k=='p'?'password':'text';i.placeholder=PHs[k];i.value='';i.style.display=$('#mb').style.display=k=='e'?'none':'';$('#mn').textContent=NT[k];$('#mo').innerHTML='';if(k=='e')mw()}
+async function pwn(v){const h=[...new Uint8Array(await crypto.subtle.digest('SHA-1',new TextEncoder().encode(v)))].map(x=>x.toString(16).padStart(2,'0')).join('').toUpperCase(),r=await fetch('https://api.pwnedpasswords.com/range/'+h.slice(0,5)),t=await r.text(),m=t.split('\n').find(l=>l.startsWith(h.slice(5)));return m?parseInt(m.split(':')[1]):0}
+async function mw(){const v=$('#mi').value.trim(),o=$('#mo'),e=encodeURIComponent,nb=h=>'<div class="n" style="grid-column:1/-1">'+h+'</div>';let L=[],ok=false;
+if(mK=='p'){if(!v){o.innerHTML=nb('Entre un mot de passe de test.');return}o.innerHTML=nb('Vérification...');try{const n=await pwn(v);o.innerHTML=nb(n?'<b class="ko">Trouvé '+n.toLocaleString('fr-FR')+' fois dans des fuites.</b> Ne l\'utilise plus nulle part.':'<b class="ok">Introuvable dans les fuites connues.</b> Cela ne prouve pas qu\'il est solide : la longueur et l\'unicité comptent.')}catch(x){o.innerHTML=nb('Vérification impossible (hors ligne ou bloquée par le navigateur).')}return}
+if(mK=='d'){const d=v.toLowerCase().replace(/^https?:\/\//,'').split('/')[0];ok=/^([a-z0-9-]+\.)+[a-z]{2,}$/.test(d);if(ok)L=[['ICANN Lookup','Propriétaire et dates (WHOIS/RDAP)','https://lookup.icann.org/en/lookup?name='+e(d)],['crt.sh','Certificats et sous-domaines','https://crt.sh/?q='+e(d)],['Wayback Machine','Anciennes versions du site','https://web.archive.org/web/*/'+e(d)],['urlscan.io','Scans et ressources chargées','https://urlscan.io/search/#domain:'+e(d)],['VirusTotal','Réputation du domaine','https://www.virustotal.com/gui/domain/'+e(d)],['Shodan','Services exposés','https://www.shodan.io/search?query=hostname%3A'+e(d)]]}
+else if(mK=='c'){const c=v.toUpperCase();ok=/^CVE-\d{4}-\d{4,7}$/.test(c);if(ok)L=[['NVD','Fiche officielle et score CVSS','https://nvd.nist.gov/vuln/detail/'+c],['CVE.org','Enregistrement CVE','https://www.cve.org/CVERecord?id='+c],['GitHub Advisories','Correctifs et paquets concernés','https://github.com/advisories?query='+c]]}
+else if(mK=='h'){const h=v.toLowerCase();ok=/^([a-f0-9]{32}|[a-f0-9]{40}|[a-f0-9]{64})$/.test(h);if(ok)L=[['VirusTotal','Analyse multi-antivirus','https://www.virustotal.com/gui/file/'+h],['MalwareBazaar','Base d\'échantillons de malwares','https://bazaar.abuse.ch/browse.php?search='+h],['Hybrid Analysis','Rapports en bac à sable','https://www.hybrid-analysis.com/search?query='+h]]}
+else if(mK=='u'){ok=/^https?:\/\/[^\s]+$/i.test(v);if(ok)L=[['VirusTotal','Réputation de l\'URL','https://www.virustotal.com/gui/search/'+e(v)],['Google Safe Browsing','Signalements de phishing et malwares','https://transparencyreport.google.com/safe-browsing/search?url='+e(v)],['urlscan.io','Scans de la page','https://urlscan.io/search/#'+e(v)]]}
+else{ok=true;L=[['Have I Been Pwned','Entre ton adresse sur leur site pour voir les fuites connues','https://haveibeenpwned.com/'],['Firefox Monitor','Surveillance des fuites (compte Mozilla)','https://monitor.mozilla.org/'],['Cybermalveillance.gouv.fr','Que faire si ton compte est compromis','https://www.cybermalveillance.gouv.fr/']]}
+o.innerHTML=ok?L.map(x=>'<a class="c" href="'+x[2]+'" target="_blank" rel="noopener"><h4>'+x[0]+'</h4><p>'+x[1]+'</p></a>').join(''):nb('Format non reconnu pour ce type de recherche.')}
+document.addEventListener('keydown',e=>{if(e.key=='Enter'&&e.target.id=='mi')mw()});
+/* métadonnées */
+function rdExif(buf){const v=new DataView(buf);if(v.byteLength<12||v.getUint16(0)!=65496)return null;let o=2;
+while(o+10<v.byteLength){const m=v.getUint16(o);if(m==65505&&v.getUint32(o+4)==1165519206){const b=o+10,le=v.getUint16(b)==18761,w=p=>v.getUint16(p,le),d=p=>v.getUint32(p,le),R={};
+const val=p=>{const t=w(p+2),n=d(p+4),z=({1:1,2:1,3:2,4:4,5:8})[t]||1,q=z*n>4?b+d(p+8):p+8;if(t==2){let s='';for(let i=0;i<n-1;i++)s+=String.fromCharCode(v.getUint8(q+i));return s}if(t==5){const a=[];for(let i=0;i<n;i++)a.push(d(q+i*8)/(d(q+i*8+4)||1));return n==1?a[0]:a}return t==3?w(q):d(q)};
+const ifd=(off,map)=>{const p0=b+off,n=w(p0),sub={};for(let i=0;i<n;i++){const p=p0+2+i*12,tg=w(p);if(map[tg])R[map[tg]]=val(p);if(tg==34665||tg==34853)sub[tg]=d(p+8)}return sub};
+const s=ifd(d(b+4),{271:'Fabricant',272:'Modèle',305:'Logiciel',306:'Date'});
+if(s[34665])ifd(s[34665],{36867:'Date de prise de vue',42036:'Objectif'});
+if(s[34853])ifd(s[34853],{1:'latR',2:'lat',3:'lonR',4:'lon',6:'altitude'});
+return R}
+if((m&65280)!=65280)break;o+=2+v.getUint16(o+2)}return {}}
+function mfile(f){if(!f)return;CUR=f;const o=$('#mo2');o.style.display='block';$('#msb').style.display='';f.arrayBuffer().then(b=>{const r=rdExif(b),L=['Fichier : '+f.name,'Taille : '+Math.round(f.size/1024)+' Ko','Type : '+f.type,'Modifié : '+new Date(f.lastModified).toLocaleString('fr-FR')];
+if(r===null)L.push('EXIF lisible seulement pour les JPEG.');else{const k=Object.keys(r).filter(x=>!/R$|^lat$|^lon$/.test(x));k.forEach(x=>L.push(x+' : '+r[x]));
+if(r.lat&&r.lon){const c=(a,ref)=>(a[0]+a[1]/60+a[2]/3600)*(/[SW]/.test(ref)?-1:1);L.push('GPS : '+c(r.lat,r.latR).toFixed(5)+', '+c(r.lon,r.lonR).toFixed(5)+'  <- cette photo révèle où elle a été prise !')}else L.push('GPS : aucune coordonnée trouvée.')}
+o.textContent=L.join('\n')})}
+function strip(){if(!CUR)return;const im=new Image();im.onload=()=>{const c=document.createElement('canvas');c.width=im.width;c.height=im.height;c.getContext('2d').drawImage(im,0,0);c.toBlob(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='sans-metadonnees.jpg';a.click()},'image/jpeg',.92)};im.src=URL.createObjectURL(CUR)}
+/* tunnel */
+function tz(){const d=$('#door'),z=$('#zone');if(!d||!z)return;d.style.display=TZ?'none':'';z.hidden=!TZ;if(TZ){z.classList.add('za');nn();scrollTo(0,0)}}
+function nn(){const s=$('#nn');if(!s||s.childNodes.length)return;const L=[[50,[30,70,110]],[160,[20,53,86,119]],[270,[50,90]]];let h='<rect width="320" height="140" rx="10" fill="#0e0e0f"/>';
+for(let i=0;i<2;i++)L[i][1].forEach(a=>L[i+1][1].forEach(b=>h+='<line x1="'+L[i][0]+'" y1="'+a+'" x2="'+L[i+1][0]+'" y2="'+b+'" stroke="#4a4d54"/>'));
+L.forEach((l,i)=>l[1].forEach(y=>h+='<circle cx="'+l[0]+'" cy="'+y+'" r="9" fill="'+(i==1?'#d9dce2':i?'#ffb84d':'#7be0ad')+'"/>'));
+h+='<g fill="#9b9fa7" font-size="11" text-anchor="middle"><text x="50" y="136">Entrées</text><text x="160" y="136">Couche cachée</text><text x="270" y="136">Sorties</text></g>';s.innerHTML=h}
+function tele(){if($('#tl'))return;const c=document.createElement('canvas');c.id='tl';c.style.cssText='position:fixed;inset:0;z-index:30;width:100%;height:100%';document.body.appendChild(c);document.body.style.overflow='hidden';
+const W=c.width=innerWidth,H=c.height=innerHeight,g=c.getContext('2d'),cx=W/2,cy=H/2,M=Math.hypot(cx,cy),t0=performance.now(),ST=Array.from({length:160},()=>({a:Math.random()*6.283,p:Math.random(),s:.4+Math.random()*.8}));
+(function f(now){const t=now-t0;g.fillStyle='#050505';g.fillRect(0,0,W,H);
+if(t<900){const k=t/900,w=W*(.2+.9*k*k),h=H*(.4+.8*k*k);g.fillStyle='rgba(255,255,255,'+k+')';g.fillRect(cx-w/2,cy-h/2,w,h)}
+else{const u=Math.min(1,(t-900)/2500),sp=u*u*6+u*1.5;
+for(let j=0;j<16;j++){const p=(j/16+sp*.35)%1,r=Math.pow(p,2.6)*M*1.5+4;g.save();g.translate(cx,cy);g.rotate(u*2+j*.12);g.strokeStyle='rgba(235,238,245,'+Math.sin(Math.PI*Math.min(1,p*1.15))*.9+')';g.lineWidth=1+p*5;g.strokeRect(-r,-r,2*r,2*r);g.restore()}
+g.lineWidth=1.5;ST.forEach(s=>{const p=(s.p+sp*.5*s.s)%1,q=Math.min(1,p+.06*s.s*(1+u*4)),r1=p*p*M*1.4,r2=q*q*M*1.4,co=Math.cos(s.a),si=Math.sin(s.a);g.strokeStyle='rgba(255,255,255,'+p*.9+')';g.beginPath();g.moveTo(cx+co*r1,cy+si*r1);g.lineTo(cx+co*r2,cy+si*r2);g.stroke()});
+g.font='700 '+Math.min(W*.08,52)+'px "Chakra Petch",sans-serif';g.textAlign='center';g.fillStyle='rgba(255,255,255,'+Math.min(1,u*2)*(1-Math.max(0,(u-.8)*5))+')';g.fillText('ZONE ROBOTIQUE & IA',cx,cy);
+if(u<.15){g.fillStyle='rgba(255,255,255,'+(1-u/.15)+')';g.fillRect(0,0,W,H)}if(u>.8){g.fillStyle='rgba(255,255,255,'+(u-.8)*5+')';g.fillRect(0,0,W,H)}}
+if(t<3500)requestAnimationFrame(f);else{c.remove();document.body.style.overflow='';TZ=true;tz()}})(t0)}
 /* éclairs */
 const cv=$('#fx'),x=cv.getContext('2d');let W,H,B=[];
 function rs(){W=cv.width=innerWidth;H=cv.height=innerHeight}addEventListener('resize',rs);rs();
