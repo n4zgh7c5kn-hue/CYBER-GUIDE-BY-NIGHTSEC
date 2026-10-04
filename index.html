@@ -57,25 +57,80 @@ h1,h2{text-shadow:0 0 26px #4d8dff44}
 #intro .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#4d8dff,#fff);animation:ld 3s .3s forwards}
 @keyframes ld{to{width:100%}}
 #intro small{color:var(--m);font:12px ui-monospace,monospace}
+.f,.c input{background:#0d1016;border:1px solid var(--l);color:var(--i);border-radius:8px;padding:9px 12px;font:inherit;width:min(100%,320px);margin:6px 8px 6px 0;outline:0}
+.f{width:100%}.f:focus,.c input:focus{border-color:var(--a);box-shadow:0 0 12px #4d8dff44}
+.ty{font:15px ui-monospace,monospace;color:var(--a)}.ty b{animation:bl 1s infinite}
+h2:hover{animation:gt .35s steps(2) 2}@keyframes gt{0%{text-shadow:2px 0 #ff3d6e,-2px 0 #3dd5ff}50%{text-shadow:-2px 0 #ff3d6e,2px 0 #3dd5ff;transform:translateX(1px)}100%{text-shadow:none}}
+#sp{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(420px circle at var(--x,50%) var(--y,30%),#4d8dff16,transparent 70%)}
+#intro h1{display:none}#intro .bar i{animation-duration:9.7s}
+#mx{position:absolute;inset:0;opacity:.4;pointer-events:none}#big{position:absolute;inset:0;pointer-events:none}
+#intro #big svg{animation:none;opacity:0;width:clamp(40px,10vmin,66px);position:absolute;left:50%;top:50%;filter:drop-shadow(0 0 10px #4d8dff)}
+#intro.p2 .lg,#intro.p2 .bar,#intro.p2 small{opacity:0;transition:opacity .5s}
+#fin{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:grid;justify-items:center;gap:12px;opacity:0;transition:opacity .5s,transform .9s cubic-bezier(.6,0,1,.6)}
+#intro.fin #fin{opacity:1}#intro.x #fin{transform:translate(-50%,-50%) scale(9)}
+#intro #lgo{animation:none;opacity:1;transform:none;width:clamp(130px,34vmin,230px);filter:drop-shadow(0 0 22px #4d8dff)}
+#sh{stroke-dasharray:1;stroke-dashoffset:1}#intro.fin #sh{animation:dr 1.3s ease forwards}@keyframes dr{to{stroke-dashoffset:0}}
+#bz{opacity:0}#intro.ti #bz{opacity:1;transition:opacity .4s}
+#fin b,#fin em{opacity:0}#fin b{font:700 clamp(30px,9vw,64px)/1 'Chakra Petch',sans-serif;letter-spacing:.06em;text-shadow:0 0 26px #4d8dff}
+#fin em{font:500 clamp(14px,3.6vw,22px) 'Chakra Petch',sans-serif;color:var(--a);letter-spacing:.25em}
+#intro.ti #fin b,#intro.ti #fin em{animation:tt 1s forwards}@keyframes tt{from{opacity:0;letter-spacing:.4em;filter:blur(10px)}to{opacity:1;filter:none}}
+#intro.fl:before{content:'';position:absolute;inset:0;background:#fff;z-index:3;animation:fl .7s forwards}@keyframes fl{from{opacity:.8}to{opacity:0}}
+
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style></head><body>
 <div id="pg"></div>
-<div id="intro"><div class="lg">
+<div id="intro"><svg width="0" height="0" style="position:absolute"><defs>
+<symbol id="s-code" viewBox="0 0 100 100"><path d="M34 28L12 50l22 22M66 28l22 22-22 22M56 22L44 78" stroke="#8fd0ff" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="s-bot" viewBox="0 0 100 100"><rect x="20" y="30" width="60" height="48" rx="12" fill="#2a3446" stroke="#8fd0ff" stroke-width="4"/><circle cx="38" cy="52" r="6" fill="#4d8dff"/><circle cx="62" cy="52" r="6" fill="#4d8dff"/><path d="M50 30V16" stroke="#8fd0ff" stroke-width="4"/><circle cx="50" cy="13" r="5" fill="#ff5a62"/><path d="M38 68h24" stroke="#8fd0ff" stroke-width="4" stroke-linecap="round"/></symbol>
+<symbol id="s-shield" viewBox="0 0 100 100"><path d="M50 8L86 22V54C86 76 70 90 50 96C30 90 14 76 14 54V22Z" fill="#1b2a4a" stroke="#4d8dff" stroke-width="4"/><path d="M34 52l12 12 22-24" stroke="#3ddc84" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="s-lock" viewBox="0 0 100 100"><rect x="22" y="44" width="56" height="42" rx="9" fill="#2a3446" stroke="#8fd0ff" stroke-width="4"/><path d="M33 44V32a17 17 0 0134 0v12" stroke="#8fd0ff" stroke-width="5" fill="none"/><circle cx="50" cy="64" r="6" fill="#ffd43b"/></symbol>
+<symbol id="s-term" viewBox="0 0 100 100"><rect x="8" y="16" width="84" height="68" rx="10" fill="#0d1016" stroke="#8fd0ff" stroke-width="4"/><path d="M24 40l16 12-16 12M48 66h26" stroke="#3ddc84" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="s-bug" viewBox="0 0 100 100"><ellipse cx="50" cy="56" rx="20" ry="26" fill="#ff5a62"/><circle cx="50" cy="28" r="10" fill="#ff5a62"/><path d="M30 46H12M30 62H12M70 46h18M70 62h18M36 34L24 22M64 34l12-12" stroke="#ffb3b7" stroke-width="5" stroke-linecap="round"/></symbol>
+<symbol id="s-chip" viewBox="0 0 100 100"><rect x="26" y="26" width="48" height="48" rx="6" fill="#2a3446" stroke="#8fd0ff" stroke-width="4"/><rect x="40" y="40" width="20" height="20" fill="#4d8dff"/><path d="M38 26V10M50 26V10M62 26V10M38 74v16M50 74v16M62 74v16M26 38H10M26 50H10M26 62H10M74 38h16M74 50h16M74 62h16" stroke="#8fd0ff" stroke-width="4" stroke-linecap="round"/></symbol>
+<symbol id="s-globe" viewBox="0 0 100 100"><circle cx="50" cy="50" r="38" fill="none" stroke="#8fd0ff" stroke-width="4"/><ellipse cx="50" cy="50" rx="16" ry="38" fill="none" stroke="#8fd0ff" stroke-width="3"/><path d="M12 50h76M20 30h60M20 70h60" stroke="#8fd0ff" stroke-width="3"/></symbol>
+<symbol id="s-key" viewBox="0 0 100 100"><circle cx="32" cy="50" r="16" fill="none" stroke="#ffd43b" stroke-width="7"/><path d="M48 50h40M76 50v14M64 50v10" stroke="#ffd43b" stroke-width="7" stroke-linecap="round"/></symbol>
+<symbol id="s-gh" viewBox="0 0 100 100"><circle cx="50" cy="50" r="44" fill="#f0f6fc"/><path d="M29 28l10 12q11-4 22 0l10-12 2 24q0 22-23 22T27 52z" fill="#0d1117"/><circle cx="42" cy="54" r="3.5" fill="#f0f6fc"/><circle cx="58" cy="54" r="3.5" fill="#f0f6fc"/></symbol>
+</defs></svg><canvas id="mx"></canvas><div class="lg">
 <svg viewBox="0 0 100 100" aria-label="Linux"><ellipse cx="50" cy="58" rx="27" ry="33" fill="#1b1f27" stroke="#8aa0c8" stroke-width="2"/><ellipse cx="50" cy="66" rx="17" ry="24" fill="#f2f4f8"/><circle cx="42" cy="34" r="4.5" fill="#fff"/><circle cx="58" cy="34" r="4.5" fill="#fff"/><circle cx="43" cy="35" r="2" fill="#000"/><circle cx="57" cy="35" r="2" fill="#000"/><path d="M42 42q8-5 16 0q-8 8-16 0z" fill="#f5a623"/><ellipse cx="38" cy="91" rx="12" ry="5" fill="#f5a623"/><ellipse cx="62" cy="91" rx="12" ry="5" fill="#f5a623"/></svg>
 <svg viewBox="0 0 100 100" aria-label="Python"><rect x="8" y="8" width="54" height="50" rx="16" fill="#3b78b8"/><rect x="38" y="42" width="54" height="50" rx="16" fill="#ffd43b"/><circle cx="25" cy="24" r="4" fill="#fff"/><circle cx="75" cy="76" r="4" fill="#fff"/></svg>
 <svg viewBox="0 0 100 100" aria-label="JavaScript"><rect x="8" y="8" width="84" height="84" rx="8" fill="#f7df1e"/><text x="88" y="86" text-anchor="end" font-family="Chakra Petch,sans-serif" font-weight="700" font-size="40" fill="#161a22">JS</text></svg>
-</div><h1>CYBER GUIDE<em>by nightsec</em></h1><div class="bar"><i></i></div><small>initialisation... clique pour passer</small></div>
-<canvas id="fx"></canvas>
+</div><h1>CYBER GUIDE<em>by nightsec</em></h1><div class="bar"><i></i></div><small>initialisation... clique pour passer</small><div id="big"></div><div id="fin"><svg id="lgo" viewBox="0 0 100 120"><path id="sh" pathLength="1" d="M50 6L90 20V58C90 86 72 104 50 114C28 104 10 86 10 58V20Z" fill="none" stroke="#4d8dff" stroke-width="3.5" stroke-linejoin="round"/><path id="bz" d="M54 30L34 66H48L44 92L68 54H53Z" fill="#e6ebf5"/></svg><b>CYBER GUIDE</b><em>by nightsec</em></div></div>
+<canvas id="fx"></canvas><div id="sp"></div>
 <header><button class="bg" id="bg" aria-label="Menu"><i></i><i></i><i></i></button><span class="brand">CYBER GUIDE <small>by nightsec</small></span><span class="st">en ligne</span></header>
 <div id="ov"></div><nav id="nav"></nav><main id="v"></main>
 <footer>CYBER GUIDE by nightsec · contenu éducatif et défensif uniquement. Toute attaque sans autorisation est illégale.</footer>
 <script>
+const DIST=[
+["Ubuntu","#e95420","U","Debian","Facile","Débutants, bureau, serveurs","La distribution la plus populaire, avec une énorme communauté.","https://ubuntu.com/download"],
+["Linux Mint","#87cf3e","M","Ubuntu","Très facile","Passer de Windows à Linux","Interface classique et stable, très accueillante.","https://linuxmint.com/download.php"],
+["Debian","#d70a53","D","Indépendante","Moyenne","Serveurs, stabilité maximale","La base de centaines d'autres distributions.","https://www.debian.org/distrib/"],
+["Kali Linux","#367bf0","K","Debian","Moyenne","Cybersécurité, pentest","Des centaines d'outils de sécurité préinstallés. À utiliser dans une machine virtuelle.","https://www.kali.org/get-kali/"],
+["Parrot OS","#15c8b0","P","Debian","Moyenne","Sécurité et vie privée","Alternative à Kali, plus légère.","https://parrotsec.org/download/"],
+["Tails","#56347c","T","Debian","Facile","Anonymat","Démarre depuis une clé USB, passe par Tor et ne laisse aucune trace.","https://tails.net/install/"],
+["Arch Linux","#1793d1","A","Indépendante","Difficile","Utilisateurs avancés","Tu construis ton système toi-même, pièce par pièce.","https://archlinux.org/download/"],
+["Fedora","#3c6eb4","F","Indépendante (Red Hat)","Facile","Développeurs, logiciels récents","Moderne, sécurisée, mises à jour rapides.","https://fedoraproject.org/workstation/download"],
+["Pop!_OS","#48b9c7","P","Ubuntu","Facile","Développement et jeux","Très bon support des cartes NVIDIA.","https://pop.system76.com/"],
+["Manjaro","#35bf5c","M","Arch","Moyenne","Arch en plus simple","Installateur graphique et logiciels à jour.","https://manjaro.org/download/"],
+["openSUSE","#73ba25","O","Indépendante","Moyenne","Administration, serveurs","Outils d'administration puissants (YaST).","https://get.opensuse.org/"],
+["Qubes OS","#3874d8","Q","Xen","Difficile","Sécurité maximale","Isole chaque activité dans sa propre machine virtuelle.","https://www.qubes-os.org/downloads/"],
+["Alpine","#0d597f","A","Indépendante","Moyenne","Conteneurs, systèmes légers","Ultra-légère, quelques Mo seulement.","https://alpinelinux.org/downloads/"]];
+const dh=DIST.map(d=>'<div class="c"><div style="display:flex;gap:12px;align-items:center;margin-bottom:8px"><div style="width:46px;height:46px;flex:none;border-radius:50%;background:'+d[1]+';display:grid;place-content:center;font:700 22px \'Chakra Petch\',sans-serif;color:#fff;box-shadow:0 0 14px '+d[1]+'88">'+d[2]+'</div><h4 style="margin:0">'+d[0]+'</h4></div><p><b>Base :</b> '+d[3]+'<br><b>Difficulté :</b> '+d[4]+'<br><b>Idéal pour :</b> '+d[5]+'</p><p>'+d[6]+'</p><p><a href="'+d[7]+'" target="_blank" rel="noopener">Télécharger (site officiel)</a></p></div>').join('');
 const P=[
-{id:'accueil',t:'Accueil',d:'Le point de départ',h:`<h1>CYBER GUIDE<em>by nightsec</em></h1><p class="lead">Réseaux, Python, JavaScript, Linux, malwares, attaques, métiers, OSINT et sensibilisation. Du niveau zéro jusqu'au terrain, par petites étapes.</p><div class="n"><b>Rappel :</b> tout est fourni à but éducatif et défensif. Utiliser ces connaissances contre un système ou une personne sans autorisation est illégal.</div>`},
+{id:'accueil',t:'Accueil',d:'Le point de départ',h:`<h1>CYBER GUIDE<em>by nightsec</em></h1><p class="lead">Réseaux, Python, JavaScript, Linux, malwares, attaques, métiers, OSINT et sensibilisation. Du niveau zéro jusqu'au terrain, par petites étapes.</p><div class="n"><b>Rappel :</b> tout est fourni à but éducatif et défensif. Utiliser ces connaissances contre un système ou une personne sans autorisation est illégal.</div><p class="ty"><span id="ty"></span><b>_</b></p>`},
 {id:'reseaux',t:'Réseaux',d:'OSI, TCP/IP, ports, DNS',h:`<p class="lead">Comprendre le réseau, c'est comprendre comment les machines se parlent, donc comment protéger (ou casser) cette communication.</p>
 <h3>Modèle OSI</h3><div class="w"><table><tr><th>#</th><th>Couche</th><th>Rôle / exemples</th></tr><tr><td>7</td><td>Application</td><td>HTTP, DNS, FTP, SMTP</td></tr><tr><td>6</td><td>Présentation</td><td>Chiffrement, encodage (TLS)</td></tr><tr><td>5</td><td>Session</td><td>Ouverture et suivi des sessions</td></tr><tr><td>4</td><td>Transport</td><td>TCP (fiable), UDP (rapide), ports</td></tr><tr><td>3</td><td>Réseau</td><td>IP, routage, routeurs</td></tr><tr><td>2</td><td>Liaison</td><td>Adresses MAC, switchs, ARP</td></tr><tr><td>1</td><td>Physique</td><td>Câbles, Wi-Fi, signaux</td></tr></table></div>
 <h3>Les bases à maîtriser</h3><div class="g"><div class="c"><h4>Adresse IP</h4><p>IPv4 (192.168.1.10) ou IPv6. Privée (réseau local) ou publique (internet).</p></div><div class="c"><h4>Masque / CIDR</h4><p>/24 = 255.255.255.0 = 254 machines. Il découpe un réseau en sous-réseaux.</p></div><div class="c"><h4>DNS</h4><p>L'annuaire : transforme site.com en adresse IP.</p></div><div class="c"><h4>DHCP</h4><p>Donne automatiquement une IP à chaque appareil qui se connecte.</p></div><div class="c"><h4>NAT</h4><p>Plusieurs appareils partagent une seule IP publique.</p></div><div class="c"><h4>Pare-feu</h4><p>Autorise ou bloque le trafic selon des règles.</p></div><div class="c"><h4>VPN / Proxy</h4><p>Le VPN chiffre le tunnel. Le proxy relaie tes requêtes.</p></div><div class="c"><h4>TCP handshake</h4><p>SYN, SYN-ACK, ACK : la poignée de main avant d'échanger des données.</p></div></div>
 <h3>Ports courants</h3><div class="w"><table><tr><th>Port</th><th>Service</th><th>Note</th></tr><tr><td>22</td><td>SSH</td><td>Accès distant chiffré</td></tr><tr><td>53</td><td>DNS</td><td>UDP et TCP</td></tr><tr><td>80 / 443</td><td>HTTP / HTTPS</td><td>Web, 443 chiffré</td></tr><tr><td>21 / 23</td><td>FTP / Telnet</td><td>En clair, à éviter</td></tr><tr><td>25 / 587</td><td>SMTP</td><td>Envoi d'emails</td></tr><tr><td>3389</td><td>RDP</td><td>Bureau à distance Windows</td></tr></table></div>
+<h3>TCP et UDP</h3><div class="w"><table><tr><th></th><th>TCP</th><th>UDP</th></tr><tr><td>Connexion</td><td>Oui (handshake)</td><td>Non</td></tr><tr><td>Fiabilité</td><td>Accusés et renvoi</td><td>Aucune garantie</td></tr><tr><td>Usage</td><td>Web, mail, SSH</td><td>DNS, streaming, jeux</td></tr></table></div>
+<h3>Protocoles utiles</h3><p><b>ARP</b> relie IP et adresse MAC. <b>ICMP</b> (ping, traceroute) teste la joignabilité. <b>VLAN</b> sépare des réseaux sur un même switch. <b>NAT</b> traduit les adresses privées. <b>WPA2/WPA3</b> protègent le Wi-Fi. <b>TLS</b> chiffre HTTP, SMTP et IMAP.</p>
+<h3>Commandes réseau</h3><pre>ping 8.8.8.8             # joignabilité
+traceroute site.com      # chemin des paquets
+dig site.com             # requêtes DNS
+ip a                     # tes interfaces
+ss -tulpn                # ports en écoute
+curl -I https://site.com # en-têtes HTTP</pre>
+<h3>Sous-réseaux, exemple</h3><p>192.168.1.0/24 : adresses de .1 à .254, broadcast .255. Un /26 donne 62 machines, un /30 en donne 2. Formule : 2<sup>(32 − masque)</sup> − 2.</p>
+<h3>Défense réseau</h3><p>Segmenter (VLAN), filtrer (pare-feu), surveiller (IDS/IPS comme Suricata), chiffrer (VPN, TLS), fermer les ports inutiles, désactiver Telnet et FTP.</p>
 <h3>Parcours conseillé</h3><p>1) Adresses IP et masques. 2) Modèle OSI et TCP/IP. 3) DNS, DHCP, NAT. 4) Observer du trafic avec Wireshark sur ton propre réseau. 5) Monter un petit labo avec Cisco Packet Tracer. 6) Passer la certification CompTIA Network+ ou CCNA.</p>`},
 {id:'malwares',t:'Malwares',d:'Les logiciels malveillants',h:`<p class="lead">Un malware est un programme conçu pour nuire, espionner ou prendre le contrôle d'un système sans l'accord de son propriétaire.</p>
 <div class="g"><div class="c"><h4>Virus</h4><p>S'attache à un fichier et se propage quand on l'exécute.</p></div><div class="c"><h4>Ver</h4><p>Se copie seul à travers le réseau, sans action humaine.</p></div><div class="c"><h4>Cheval de Troie</h4><p>Paraît légitime (crack, jeu) mais ouvre une porte cachée.</p></div><div class="c"><h4>Ransomware</h4><p>Chiffre tes fichiers et réclame une rançon.</p></div><div class="c"><h4>Spyware / keylogger</h4><p>Espionne l'activité et enregistre les frappes.</p></div><div class="c"><h4>Rootkit</h4><p>Se cache au cœur du système pour rester invisible.</p></div><div class="c"><h4>Botnet</h4><p>Des machines infectées pilotées à distance, souvent pour du DDoS.</p></div><div class="c"><h4>Adware</h4><p>Publicités intrusives, parfois porte d'entrée d'autres menaces.</p></div></div>
@@ -116,6 +171,39 @@ except FileNotFoundError:
 <h3>Étape 6 : une première vraie utilité</h3><p>Vérifier l'empreinte d'un fichier téléchargé, très utile pour savoir s'il a été modifié.</p><pre>import hashlib
 data = open("fichier.iso", "rb").read()
 print(hashlib.sha256(data).hexdigest())</pre>
+<h3>Étape 7 : dictionnaires</h3><pre>user = {"nom": "nightsec", "niveau": 3}
+print(user["nom"])
+for cle, val in user.items():
+    print(cle, val)</pre>
+<h3>Étape 8 : compréhensions et tri</h3><pre>carres = [n * n for n in range(10)]
+pairs = [n for n in carres if n % 2 == 0]
+print(sorted(pairs, reverse=True))</pre>
+<h3>Étape 9 : classes</h3><pre>class Machine:
+    def __init__(self, nom, ip):
+        self.nom, self.ip = nom, ip
+    def info(self):
+        return self.nom + " : " + self.ip
+print(Machine("pc", "192.168.1.5").info())</pre>
+<h3>Étape 10 : modules et environnement virtuel</h3><pre>python -m venv env
+source env/bin/activate
+pip install requests</pre>
+<h3>Étape 11 : analyser un log avec les regex</h3><pre>import re
+ligne = "Failed password for root from 10.0.0.8 port 22"
+m = re.search(r"from (\d+\.\d+\.\d+\.\d+)", ligne)
+print(m.group(1) if m else "rien")</pre>
+<h3>Étape 12 : réseau, sur ta propre machine</h3><pre>import socket
+s = socket.socket()
+s.settimeout(1)
+ok = s.connect_ex(("127.0.0.1", 22)) == 0
+print("port 22 ouvert" if ok else "fermé")</pre>
+<h3>Étape 13 : lire une page web</h3><pre>import requests
+r = requests.get("https://example.com")
+print(r.status_code, r.headers["Content-Type"])</pre>
+<h3>Étape 14 : arguments en ligne de commande</h3><pre>import argparse
+p = argparse.ArgumentParser()
+p.add_argument("fichier")
+print(p.parse_args().fichier)</pre>
+<p>Bonnes pratiques : noms clairs, fonctions courtes, gérer les erreurs, ne jamais écrire un mot de passe en dur. Projets : vérificateur de hash, analyseur de logs, testeur de mots de passe faibles sur tes propres données.</p>
 <h3>Suite du parcours</h3><p>Dictionnaires, classes, modules <code>requests</code>, <code>socket</code>, <code>argparse</code>. Pratique sur root-me.org et TryHackMe.</p>`},
 {id:'js',t:'JavaScript',d:'Pas à pas',h:`<p class="lead">Le langage du web. Essentiel pour comprendre les failles comme le XSS. Teste dans la console de ton navigateur (F12).</p>
 <h3>Étape 1 : variables</h3><pre>const nom = "nightsec";
@@ -132,12 +220,41 @@ document.querySelector("h2").textContent = "modifié";</pre>
 <h3>Étape 6 : événements</h3><pre>document.body.addEventListener("click", () => {
   console.log("clic détecté");
 });</pre>
-<p>Ensuite : <code>fetch</code>, JSON, et sécurité côté navigateur (cookies, CSP, same-origin).</p>`},
+<h3>Étape 7 : objets et JSON</h3><pre>const user = {nom: "nightsec", niveau: 3};
+const txt = JSON.stringify(user);
+console.log(JSON.parse(txt).nom);</pre>
+<h3>Étape 8 : fetch asynchrone</h3><pre>async function charger() {
+  const r = await fetch("https://api.github.com/zen");
+  console.log(await r.text());
+}
+charger();</pre>
+<h3>Étape 9 : stockage dans le navigateur</h3><pre>localStorage.setItem("theme", "sombre");
+console.log(localStorage.getItem("theme"));</pre>
+<h3>Étape 10 : sécurité, textContent contre innerHTML</h3><pre>const saisie = "&lt;img src=x onerror=alert(1)&gt;";
+el.textContent = saisie;  // sûr : affiché comme du texte
+// el.innerHTML = saisie; // dangereux : faille XSS</pre>
+<p>Ensuite : classes, modules (<code>import</code>), Node.js, et sécurité côté navigateur (cookies, CSP, same-origin). Voir aussi la page Web.</p>`},
+{id:'web',t:'Web',d:'HTML, CSS, HTTP, sécurité',h:`<p class="lead">Le web repose sur trois langages et un protocole.</p><div class="g"><div class="c"><h4>HTML</h4><p>La structure : titres, liens, formulaires.</p></div><div class="c"><h4>CSS</h4><p>Le style : couleurs, mise en page, animations.</p></div><div class="c"><h4>JavaScript</h4><p>Le comportement : interactions, appels réseau.</p></div><div class="c"><h4>HTTP / HTTPS</h4><p>Requêtes et réponses (HTTPS = chiffré avec TLS).</p></div></div>
+<h3>Une page minimale</h3><pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="fr"&gt;
+&lt;body&gt;
+  &lt;h1&gt;Salut&lt;/h1&gt;
+  &lt;a href="https://example.com"&gt;Un lien&lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<h3>Le trajet d'une requête</h3><p>Tu tapes une adresse, le DNS donne l'IP, connexion TCP, poignée de main TLS, requête HTTP, réponse (HTML, CSS, JS), puis le navigateur affiche la page.</p>
+<h3>Méthodes et codes HTTP</h3><div class="w"><table><tr><th>Méthode</th><th>Rôle</th></tr><tr><td>GET</td><td>Lire une ressource</td></tr><tr><td>POST</td><td>Envoyer des données</td></tr><tr><td>PUT / PATCH</td><td>Modifier</td></tr><tr><td>DELETE</td><td>Supprimer</td></tr></table></div><div class="w"><table><tr><th>Code</th><th>Sens</th></tr><tr><td>200</td><td>OK</td></tr><tr><td>301 / 302</td><td>Redirection</td></tr><tr><td>400</td><td>Requête invalide</td></tr><tr><td>401 / 403</td><td>Non authentifié / interdit</td></tr><tr><td>404</td><td>Introuvable</td></tr><tr><td>500</td><td>Erreur serveur</td></tr></table></div>
+<h3>Cookies et sessions</h3><p>Un cookie stocke un identifiant de session. Protège-le avec <code>HttpOnly</code>, <code>Secure</code> et <code>SameSite</code>.</p>
+<h3>En-têtes de sécurité</h3><p><code>Content-Security-Policy</code>, <code>Strict-Transport-Security</code>, <code>X-Content-Type-Options</code>, <code>X-Frame-Options</code>.</p>
+<h3>OWASP Top 10, les grandes familles</h3><p>Contrôle d'accès défaillant, défauts cryptographiques, injections (SQL, XSS), conception non sécurisée, mauvaise configuration, composants vulnérables, authentification faible, intégrité des données, journalisation insuffisante, SSRF. Entraîne-toi légalement sur PortSwigger Academy et OWASP Juice Shop.</p>
+<h3>Outils</h3><p>Les outils développeur du navigateur (F12) : Éléments, Console, Réseau et Stockage.</p>`},
 {id:'linux',t:'Linux et terminal',d:'Mini terminal interactif',h:`<p class="lead">Linux fait tourner la majorité des serveurs et des outils de sécurité. Essaie les commandes ici, sans rien risquer.</p>
 <div class="term"><pre id="out">Tape help pour voir les commandes.\n</pre><div><span id="ps">~$</span><input id="in" autocomplete="off" autocapitalize="off" spellcheck="false"></div></div>
 <h3>Commandes essentielles</h3><div class="w"><table><tr><th>Commande</th><th>Rôle</th></tr><tr><td><code>ls -la</code></td><td>Lister les fichiers avec permissions</td></tr><tr><td><code>cd /dossier</code></td><td>Changer de dossier</td></tr><tr><td><code>cat fichier</code></td><td>Afficher un fichier</td></tr><tr><td><code>grep mot fichier</code></td><td>Chercher un mot</td></tr><tr><td><code>chmod 755 f</code></td><td>Modifier les permissions</td></tr><tr><td><code>sudo</code></td><td>Exécuter en administrateur</td></tr><tr><td><code>ps aux</code></td><td>Voir les processus</td></tr><tr><td><code>ip a</code></td><td>Voir ses adresses réseau</td></tr></table></div>
 <p>Permissions : r=4, w=2, x=1. <code>755</code> = propriétaire tout, groupe et autres lecture + exécution.</p>
 <h3>Distributions</h3><p>Ubuntu/Debian pour apprendre, Kali et Parrot pour la sécurité, Tails pour l'anonymat. Installe-les dans une machine virtuelle (VirtualBox).</p>`},
+{id:'distros',t:'Distributions Linux',d:'Logos, attributs, téléchargement',h:`<p class="lead">Une distribution, c'est le noyau Linux plus des logiciels et un bureau. Voici les principales, avec le lien de téléchargement officiel. Les pastilles de couleur sont des repères visuels, pas les logos officiels.</p><div class="g">${dh}</div>
+<h3>Télécharger et installer en 5 étapes</h3><div class="n"><b>1.</b> Va uniquement sur le site officiel et télécharge l'image ISO.<br><b>2.</b> Vérifie l'empreinte SHA-256 avec <code>sha256sum fichier.iso</code> et compare avec celle du site.<br><b>3.</b> Crée une clé USB bootable avec Balena Etcher ou Rufus (8 Go minimum).<br><b>4.</b> Teste d'abord en machine virtuelle (VirtualBox) ou en mode Live, sans rien installer.<br><b>5.</b> Pour installer pour de bon, sauvegarde tes données. Un double démarrage avec Windows est possible.</div><p>Conseil : Ubuntu ou Linux Mint pour commencer, Kali dans une machine virtuelle pour la sécurité.</p>`},
 {id:'outils',t:'Outils',d:'Sécurité et Linux',h:`<p class="lead">À utiliser uniquement sur tes machines ou des environnements autorisés.</p><h3>Sécurité</h3><div class="g"><div class="c"><h4>Nmap</h4><p>Découvre les machines et ports ouverts.</p></div><div class="c"><h4>Wireshark</h4><p>Analyse le trafic réseau paquet par paquet.</p></div><div class="c"><h4>Burp Suite</h4><p>Teste la sécurité d'applications web.</p></div><div class="c"><h4>Metasploit</h4><p>Framework de tests d'intrusion.</p></div><div class="c"><h4>Hashcat / John</h4><p>Audit de la robustesse des mots de passe.</p></div><div class="c"><h4>Ghidra</h4><p>Reverse engineering de programmes.</p></div><div class="c"><h4>Autopsy / Volatility</h4><p>Forensic disque et mémoire.</p></div><div class="c"><h4>Aircrack-ng</h4><p>Audit de la sécurité Wi-Fi.</p></div></div>
 <h3>Outils Linux utiles</h3><div class="g"><div class="c"><h4>grep, find, awk</h4><p>Fouiller fichiers et logs.</p></div><div class="c"><h4>tcpdump</h4><p>Capturer le trafic en terminal.</p></div><div class="c"><h4>netcat (nc)</h4><p>Le couteau suisse du réseau.</p></div><div class="c"><h4>ss / netstat</h4><p>Voir les connexions ouvertes.</p></div><div class="c"><h4>ufw / iptables</h4><p>Gérer le pare-feu.</p></div><div class="c"><h4>fail2ban</h4><p>Bannit les IP qui échouent trop de connexions.</p></div><div class="c"><h4>Lynis</h4><p>Audit de sécurité d'un système Linux.</p></div><div class="c"><h4>strings / file</h4><p>Inspecter un fichier inconnu.</p></div></div>`},
 {id:'osint',t:'OSINT / GEOINT',d:'Sources ouvertes et fuites',h:`<p class="lead">Collecter de l'information publique pour enquêter, se protéger ou se former.</p><div class="n"><b>Cadre légal :</b> enquêter sur une personne pour lui nuire (doxing, harcèlement) est une infraction. Entraîne-toi sur des cas fictifs, des jeux ou des organisations.</div>
@@ -155,7 +272,15 @@ document.querySelector("h2").textContent = "modifié";</pre>
 <tr><td>Consultant GRC</td><td>45–75 k€</td><td>105–150 kCHF</td><td>60–90 k€</td></tr>
 <tr><td>RSSI</td><td>80–130 k€</td><td>150–220 kCHF</td><td>100–150 k€</td></tr></table></div>
 <h3>Études</h3><p><b>France :</b> bac (spé NSI), BTS SIO SISR, BUT Réseaux, licence pro, écoles d'ingénieurs (EPITA, ESIEA, INSA...), masters cybersécurité.<br><b>Suisse :</b> HES (informatique), EPFL, ETH Zurich, apprentissage d'informaticien.<br><b>Luxembourg :</b> Université du Luxembourg (master sécurité), formations BTS, SnT.</p><p><b>Certifications :</b> Security+, CEH, OSCP, CISSP, CISM, SSCP.</p>`},
-{id:'sensibilisation',t:'Sensibilisation',d:'Se protéger au quotidien',h:`<div class="g"><div class="c"><h4>Mots de passe</h4><p>Longs et uniques, dans un gestionnaire (Bitwarden, KeePass).</p></div><div class="c"><h4>Double authentification</h4><p>Active-la partout, avec une appli plutôt que le SMS.</p></div><div class="c"><h4>Phishing</h4><p>Urgence, fautes, lien suspect : vérifie l'expéditeur et tape l'adresse toi-même.</p></div><div class="c"><h4>Doxing</h4><p>Sépare identité réelle et pseudo, supprime les métadonnées des photos. Si tu es visé : garde des preuves, signale, porte plainte.</p></div><div class="c"><h4>Wi-Fi public</h4><p>Évite les connexions sensibles ou utilise un VPN fiable.</p></div><div class="c"><h4>Mises à jour</h4><p>Elles corrigent les failles que les attaquants exploitent.</p></div><div class="c"><h4>Sauvegardes 3-2-1</h4><p>3 copies, 2 supports, 1 hors-ligne.</p></div><div class="c"><h4>Réseaux sociaux</h4><p>Limite ce que tu publies : lieu, école, habitudes.</p></div></div>`},
+{id:'sensibilisation',t:'Sensibilisation',d:'Se protéger au quotidien',h:`<div class="g"><div class="c"><h4>Mots de passe</h4><p>Longs et uniques, dans un gestionnaire (Bitwarden, KeePass).</p></div><div class="c"><h4>Double authentification</h4><p>Active-la partout, avec une appli plutôt que le SMS.</p></div><div class="c"><h4>Phishing</h4><p>Urgence, fautes, lien suspect : vérifie l'expéditeur et tape l'adresse toi-même.</p></div><div class="c"><h4>Doxing</h4><p>Sépare identité réelle et pseudo, supprime les métadonnées des photos. Si tu es visé : garde des preuves, signale, porte plainte.</p></div><div class="c"><h4>Wi-Fi public</h4><p>Évite les connexions sensibles ou utilise un VPN fiable.</p></div><div class="c"><h4>Mises à jour</h4><p>Elles corrigent les failles que les attaquants exploitent.</p></div><div class="c"><h4>Sauvegardes 3-2-1</h4><p>3 copies, 2 supports, 1 hors-ligne.</p></div><div class="c"><h4>Réseaux sociaux</h4><p>Limite ce que tu publies : lieu, école, habitudes.</p></div></div>
+<h3>Ce que ce site voit de toi</h3><div class="c"><p>Tout site peut lire ces infos dès que tu le visites. Ici rien n'est enregistré et rien ne m'est envoyé : tout s'affiche uniquement sur ton écran. Un VPN change ton IP publique.</p><button class="btn" onclick="seeMe()">Afficher mes infos</button><pre id="me" style="display:none"></pre><p>Ton IP publique est demandée au service ipify.org uniquement quand tu cliques.</p></div>
+<h3>Teste la force d'un mot de passe</h3><div class="c"><p>Calcul 100 % local : rien n'est envoyé nulle part. N'écris pas ton vrai mot de passe, invente-en un du même style.</p><input placeholder="mot de passe de test" oninput="pw(this.value)" autocomplete="off"><p id="pwo"></p></div>`},
+{id:'ctf',t:'Mini CTF',d:'4 défis à résoudre',h:`<p class="lead">Quatre défis pour t'échauffer. Trouve la réponse et valide.</p>
+<div class="c"><h4>1. César</h4><p>Message chiffré avec un décalage de 3 lettres : <code>oh uhvhdx fhvw od edvh</code></p><input id="q0" placeholder="ta réponse" autocomplete="off"><button class="btn" onclick="chk(0)">Valider</button><span id="r0"></span></div>
+<div class="c" style="margin-top:12px"><h4>2. Base64</h4><p>Décode <code>bGludXg=</code>. Indice : la fonction <code>atob()</code> dans la console du navigateur.</p><input id="q1" placeholder="ta réponse" autocomplete="off"><button class="btn" onclick="chk(1)">Valider</button><span id="r1"></span></div>
+<div class="c" style="margin-top:12px"><h4>3. Hexadécimal</h4><p>Le port HTTPS vaut 0x1BB en hexadécimal. Quelle est sa valeur en décimal ?</p><input id="q2" placeholder="ta réponse" autocomplete="off"><button class="btn" onclick="chk(2)">Valider</button><span id="r2"></span></div>
+<div class="c" style="margin-top:12px"><h4>4. Linux</h4><p>Quelle commande affiche le dossier dans lequel tu te trouves ?</p><input id="q3" placeholder="ta réponse" autocomplete="off"><button class="btn" onclick="chk(3)">Valider</button><span id="r3"></span></div>`},
+{id:'glossaire',t:'Glossaire',d:'Le vocabulaire cyber',h:`<input class="f" id="gq" placeholder="Rechercher un terme..." oninput="gl(this.value)" autocomplete="off"><div class="g" id="gl"></div>`},
 {id:'jeu',t:'Mini-jeu phishing',d:'Teste tes réflexes',h:`<p class="lead">Phishing ou message légitime ?</p><div class="c"><p id="sc">Score : 0 / 0</p><h4 id="fr"></h4><p id="ms"></p><p id="rs"></p></div><button class="btn" onclick="ans(1)">Phishing</button><button class="btn s" onclick="ans(0)">Légitime</button><button class="btn s" onclick="nx()">Suivant</button>`},
 {id:'apropos',t:'À propos',d:'Qui est nightsec',h:`<h3 style="margin-top:0">Le développeur du site</h3><p class="lead">Je suis nightsec, le développeur de ce site. J'apprends la cybersécurité et j'ai construit CYBER GUIDE pour progresser en mettant par écrit ce que j'étudie.</p><p>Mon but est double : aider les autres à se lancer avec des bases honnêtes, et apprendre moi-même. Je ne suis pas un expert, j'apprends en construisant, en testant et en me trompant. Le site grandit avec mon niveau.</p><div class="g"><div class="c"><h4>Apprendre en faisant</h4><p>Chaque page correspond à une notion que j'ai étudiée.</p></div><div class="c"><h4>Transmettre</h4><p>Rendre simple ce qui m'a paru compliqué au début.</p></div><div class="c"><h4>Rester légal</h4><p>Comprendre les menaces pour s'en protéger, jamais pour nuire.</p></div></div><p><a href="https://www.tiktok.com/@nightsec.exe" target="_blank" rel="noopener">TikTok : @nightsec.exe</a></p>`}
 ];
@@ -169,8 +294,8 @@ function go(){const id=location.hash.slice(1),p=P.find(x=>x.id==id)||P[0],m=$('#
 m.style.animation='none';m.offsetWidth;m.style.animation='';
 m.innerHTML=(p.id=='accueil'?'':'<h2>'+p.t+'</h2>')+p.h;document.title=p.t+' · CYBER GUIDE by nightsec';
 document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('on',a.dataset.id==p.id));
-menu(false);scrollTo(0,0);if(p.id=='jeu')nx();if(p.id=='linux')ps()}
-addEventListener('hashchange',go);go();
+menu(false);scrollTo(0,0);if(p.id=='jeu')nx();if(p.id=='linux')ps();if(p.id=='glossaire')gl('');if(p.id=='accueil')ty()}
+addEventListener('hashchange',go);
 /* terminal */
 const T={'readme.txt':'Bienvenue dans le terminal nightsec.','notes':{'todo.txt':'1. apprendre nmap\n2. finir TryHackMe'},'projets':{}};let cwd=[];
 const dir=()=>cwd.reduce((d,k)=>d[k],T);
@@ -188,11 +313,35 @@ case'clear':$('#out').textContent='';return null;case'':return null;
 default:return a+': commande inconnue (tape help)'}}
 document.addEventListener('keydown',e=>{if(e.target.id!='in'||e.key!='Enter')return;const o=$('#out'),v=e.target.value;
 const res=run(v);if(res!==null)o.textContent+=$('#ps').textContent+' '+v+'\n'+(res?res+'\n':'');e.target.value='';ps();o.scrollTop=o.scrollHeight});
+async function seeMe(){const o=$('#me');o.style.display='block';o.textContent='chargement...';let ip='indisponible (bloquée par ton navigateur ou hors ligne)';
+try{const r=await fetch('https://api.ipify.org?format=json');ip=(await r.json()).ip}catch(e){}
+o.textContent='IP publique : '+ip+'\nLangue : '+navigator.language+'\nFuseau horaire : '+Intl.DateTimeFormat().resolvedOptions().timeZone+'\nÉcran : '+screen.width+'x'+screen.height+'\nNavigateur : '+navigator.userAgent}
+const A=['lereseaucestlabase','linux','443','pwd'];
+function chk(i){const v=$('#q'+i).value.toLowerCase().replace(/[^a-z0-9]/g,'');$('#r'+i).innerHTML=v==A[i]?'<span class="ok">Validé !</span>':'<span class="ko">Raté, réessaie.</span>'}
+const G=[['Phishing','Faux message conçu pour voler des identifiants ou de l\'argent.'],['Ransomware','Malware qui chiffre tes fichiers et réclame une rançon.'],['Pentest','Test d\'intrusion réalisé avec autorisation pour trouver des failles.'],['CTF','Compétition de défis de sécurité (Capture The Flag).'],['Zero-day','Faille inconnue de l\'éditeur, sans correctif disponible.'],['Exploit','Code qui tire parti d\'une faille.'],['CVE','Identifiant public d\'une faille de sécurité connue.'],['Hash','Empreinte à sens unique d\'une donnée (SHA-256, par exemple).'],['Chiffrement','Rendre des données illisibles sans la clé.'],['VPN','Tunnel chiffré entre ton appareil et un autre point du réseau.'],['Pare-feu','Filtre le trafic réseau selon des règles.'],['SOC','Centre qui surveille la sécurité d\'une organisation en continu.'],['SIEM','Outil qui centralise et analyse les journaux de sécurité.'],['MFA','Authentification avec plusieurs preuves d\'identité.'],['Botnet','Réseau de machines infectées pilotées à distance.'],['Sandbox','Environnement isolé pour tester un programme sans risque.'],['OSINT','Renseignement collecté à partir de sources ouvertes.'],['Bug bounty','Prime versée pour signaler une faille de façon légale.'],['Honeypot','Leurre qui attire les attaquants pour les observer.']];
+function gl(q){const e=$('#gl');if(!e)return;q=q.toLowerCase();const r=G.filter(g=>(g[0]+g[1]).toLowerCase().includes(q));e.innerHTML=r.length?r.map(g=>'<div class="c"><h4>'+g[0]+'</h4><p>'+g[1]+'</p></div>').join(''):'<p>Aucun résultat.</p>'}
+function pw(v){const c=(/[a-z]/.test(v)?26:0)+(/[A-Z]/.test(v)?26:0)+(/\d/.test(v)?10:0)+(/[^\w]/.test(v)?32:0),e=v.length*Math.log2(c||1),s=Math.pow(2,e)/2e10,bad=/^(123456|password|azerty|qwerty|motdepasse|admin|0000|1234)/i.test(v);
+const f=s<1?'moins d\'une seconde':s<60?Math.round(s)+' secondes':s<3600?Math.round(s/60)+' minutes':s<86400?Math.round(s/3600)+' heures':s<3.15e7?Math.round(s/86400)+' jours':s<3.15e9?Math.round(s/3.15e7)+' ans':'des siècles';
+$('#pwo').innerHTML=!v?'':bad?'<span class="ko">Très courant : cassé instantanément.</span>':'Force : '+Math.round(e)+' bits. Cassé hors-ligne en : <b>'+f+'</b>'}
+let tt;function ty(){clearInterval(tt);const L='$ réseaux · python · linux · osint · sécurité';let i=0;tt=setInterval(()=>{const e=$('#ty');if(!e||i>=L.length){clearInterval(tt);return}e.textContent=L.slice(0,++i)},45)}
+addEventListener('pointermove',e=>{const s=$('#sp').style;s.setProperty('--x',e.clientX+'px');s.setProperty('--y',e.clientY+'px')},{passive:true});
 /* jeu */
 const Q=[['support@paypa1-secure.com','Votre compte est suspendu ! Cliquez ici sous 24h pour le réactiver.',1,'Domaine falsifié (paypa1) et fausse urgence.'],['no-reply@github.com','Nouvelle connexion détectée depuis un nouvel appareil. Si c\'était vous, ignorez ce message.',0,'Aucun lien exigé, aucune urgence.'],['livraison@colis-suivi.top','Colis bloqué : payez 1,99 € de frais pour le recevoir.',1,'Petits frais + domaine inhabituel : classique.'],['security@amazon.com','Votre commande est expédiée. Retrouvez le suivi dans votre compte.',0,'Pas de lien suspect, tu vérifies dans ton compte.'],['impots@gouv-remboursement.info','Vous avez droit à un remboursement. Saisissez votre carte bancaire.',1,'Aucun service public ne demande ta carte bancaire.'],['admin@lycee-ent.fr','Maintenance de l\'ENT samedi de 2h à 4h. Aucune action requise.',0,'Information sans demande d\'identifiants.']];
 let qi=-1,qs=0,qn=0,done=true;
 function nx(){qi=(qi+1)%Q.length;done=false;const q=Q[qi];$('#fr').textContent=q[0];$('#ms').textContent=q[1];$('#rs').textContent='';$('#sc').textContent='Score : '+qs+' / '+qn}
 function ans(v){if(done)return;done=true;qn++;const q=Q[qi],ok=v==q[2];if(ok)qs++;$('#rs').innerHTML='<span class="'+(ok?'ok':'ko')+'">'+(ok?'Bonne réponse.':'Raté.')+'</span> '+q[3];$('#sc').textContent='Score : '+qs+' / '+qn}
+const ICS=()=>[...document.querySelectorAll('#intro .lg svg')].map(v=>v.outerHTML).concat(['gh','code','bot','shield','lock','term','bug','chip','globe','key'].map(n=>'<svg viewBox="0 0 100 100"><use href="#s-'+n+'"/></svg>'));
+function big(){if(gone)return;const bg=$('#big'),mc=$('#mx'),mg=mc.getContext('2d'),W=mc.width=innerWidth,H=mc.height=innerHeight,M=Math.min(W,H),t0=performance.now(),D=Array.from({length:Math.ceil(W/16)},()=>Math.random()*-40);
+it.classList.add('p2');
+const E=ICS().map((h,i,a)=>{bg.insertAdjacentHTML('beforeend',h);return{s:bg.lastChild,a:i/a.length*6.283,r0:Math.hypot(W,H)*.6+Math.random()*150,o:i%2}});
+[600,1400,2200,3000,3800].forEach(t=>setTimeout(bolt,t));
+setTimeout(()=>{if(!gone)it.classList.add('fin')},3300);
+setTimeout(()=>{if(!gone){it.classList.add('fl','ti');bolt();bolt()}},4400);
+(function f(now){if(gone)return;const u=now-t0;
+mg.fillStyle='rgba(7,9,13,.14)';mg.fillRect(0,0,W,H);mg.fillStyle='#19e6a0';mg.font='14px monospace';D.forEach((y,i)=>{mg.fillText(Math.random()<.5?'0':'1',i*16,y*16);D[i]=y*16>H&&Math.random()>.975?0:y+1});
+E.forEach((e,i)=>{const k=Math.min(1,Math.max(0,(u-i*90)/1500)),q=1-Math.pow(1-k,3),c=Math.min(1,Math.max(0,(u-3400)/900)),R=M*(.28+e.o*.07),r=(e.r0+(R-e.r0)*q)*Math.pow(1-c,2),a=e.a+(1-q)*2.5+u*.0007*(1+u/3000);
+e.s.style.opacity=q*(1-c);e.s.style.transform='translate(-50%,-50%) translate('+Math.cos(a)*r+'px,'+Math.sin(a)*r+'px) scale('+(.5+.5*q)*(1-c*.7)+') rotate('+a*57+'deg)'});
+requestAnimationFrame(f)})(t0)}
 /* éclairs */
 const cv=$('#fx'),x=cv.getContext('2d');let W,H,B=[];
 function rs(){W=cv.width=innerWidth;H=cv.height=innerHeight}addEventListener('resize',rs);rs();
@@ -208,6 +357,7 @@ requestAnimationFrame(draw)}
 const rm=matchMedia('(prefers-reduced-motion:reduce)').matches,it=$('#intro');let gone=0;
 function skip(){if(gone)return;gone=1;it.classList.add('x');cv.style.zIndex='';const h=document.querySelector('main h1');if(h)h.classList.add('fk');setTimeout(()=>it.remove(),800)}
 it.onclick=skip;
-if(rm)skip();else{cv.style.zIndex=21;setTimeout(skip,3800);[200,900,1600,2300,3000].forEach(t=>setTimeout(bolt,t));draw();(function t(){setTimeout(()=>{if(!document.hidden){bolt();if(Math.random()<.4)setTimeout(bolt,160)}t()},2200+Math.random()*3800)})()}
+if(rm)skip();else{cv.style.zIndex=21;setTimeout(skip,9700);[300,1100,1900,2700].forEach(t=>setTimeout(bolt,t));setTimeout(big,3800);draw();(function t(){setTimeout(()=>{if(!document.hidden){bolt();if(Math.random()<.4)setTimeout(bolt,160)}t()},2200+Math.random()*3800)})()}
 addEventListener('scroll',()=>{$('#pg').style.width=scrollY/Math.max(1,document.documentElement.scrollHeight-innerHeight)*100+'%'},{passive:true});
+go();
 </script></body></html>
